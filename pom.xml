@@ -71,17 +71,24 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-boot-run</finalName> <!-- 결과물의 이름 지정 -->
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal> <!-- repackage로 패키징 -->
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<mainClass>com.dr_plant.project.ProjectApplication</mainClass> <!--
+					Main 클래스 경로 설정 -->
+					<outputDirectory>${project.build.directory}/target</outputDirectory> <!--
+					타겟 경로 설정 -->
 				</configuration>
 			</plugin>
 
@@ -102,6 +109,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 	<repositories>
 		<repository>
