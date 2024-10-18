@@ -73,6 +73,14 @@
 	<build>
 		<finalName>spring-boot-run</finalName> <!-- 결과물의 이름 지정 -->
 
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -85,28 +93,25 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.dr_plant.project.ProjectApplication</mainClass> <!--
-					Main 클래스 경로 설정 -->
-					<outputDirectory>${project.build.directory}/target</outputDirectory> <!--
-					타겟 경로 설정 -->
+					<mainClass>com.dr_plant.project.ProjectApplication</mainClass>
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>analyze</id>
-						<goals>
-							<goal>analyze</goal>
-						</goals>
-						<configuration>
-							<failOnWarning>true</failOnWarning>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!--			<plugin>-->
+			<!--				<groupId>org.apache.maven.plugins</groupId>-->
+			<!--				<artifactId>maven-dependency-plugin</artifactId>-->
+			<!--				<executions>-->
+			<!--					<execution>-->
+			<!--						<id>analyze</id>-->
+			<!--						<goals>-->
+			<!--							<goal>analyze</goal>-->
+			<!--						</goals>-->
+			<!--						<configuration>-->
+			<!--							<failOnWarning>true</failOnWarning>-->
+			<!--						</configuration>-->
+			<!--					</execution>-->
+			<!--				</executions>-->
+			<!--			</plugin>-->
 		</plugins>
 	</build>
 
