@@ -1,0 +1,38 @@
+name: maven build PipeLine
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Set up SSH for remote execution
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H <server_ip> >> ~/.ssh/known_hosts
+
+      # 2. Checkout the code from the master branch
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 3. Stop the running Spring Boot server
+      - name: Stop Spring Boot Server
+        run: ssh api@<server_ip> "/home/api/.spring-server.sh stop"
+
+      # 4. Build the project using Maven
+      - name: Build with Maven
+        run: |
+          ssh api@<server_ip> "
+            cd /home/api/git/user && mvn clean package
+          "
+
+      # 5. Start the Spring Boot server
+      - name: Start Spring Boot Server
+        run: ssh api@123.100.174.98:8122 "/home/api/.spring-server.sh start"
