@@ -18,23 +18,17 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p 8122 -H 123.100.174.98 >> ~/.ssh/known_hosts
 
-      # 2. Checkout the code from the master branch
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # 3. Stop the running Spring Boot server
+      # 2. Stop the running Spring Boot server
       - name: Stop Spring Boot Server
-        run: |
-          ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
+        run: ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
 
-      # 4. Build the project using Maven
+      # 3. Build the project using Maven
       - name: Build with Maven
         run: |
           ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "
             cd /home/api/git/user && mvn clean package
           "
 
-      # 5. Start the Spring Boot server
+      # 4. Start the Spring Boot server
       - name: Start Spring Boot Server
-        run: |
-          ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
+        run: ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
