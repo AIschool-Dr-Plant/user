@@ -30,6 +30,7 @@ public class MainRestController {
 	@GetMapping("/dbTest")
 	public ArrayList<CmCodeTb> selectAllCode() {
 		ArrayList<CmCodeTb> result = cmCodeMapper.select();
+		result.get(0).setMod_id("test");
 		return result;
 	}
 }
