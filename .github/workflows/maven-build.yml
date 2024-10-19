@@ -10,25 +10,15 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # 1. Set up SSH for remote execution
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 8122 -H 123.100.174.98 >> ~/.ssh/known_hosts
-
-      # 2. Stop the running Spring Boot server
+      # 1. Stop the running Spring Boot server
       - name: Stop Spring Boot Server
-        run: ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
+        run: echo "${{ secrets.PASSWORD }}" | ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
 
-      # 3. Build the project using Maven
+      # 2. Build the project using Maven
       - name: Build with Maven
         run: |
-          ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "
-            cd /home/api/git/user && mvn clean package
-          "
+          echo "${{ secrets.PASSWORD }}" | ssh -p 8122 api@123.100.174.98 "cd /home/api/git/user && mvn clean package"
 
-      # 4. Start the Spring Boot server
+      # 3. Start the Spring Boot server
       - name: Start Spring Boot Server
-        run: ssh -i ~/.ssh/id_rsa -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
+        run: echo "${{ secrets.PASSWORD }}" | ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
