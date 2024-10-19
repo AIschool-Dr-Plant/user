@@ -1,4 +1,4 @@
-name: maven build PipeLine
+name: maven build Pipeline
 
 on:
   push:
@@ -10,15 +10,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # 1. Stop the running Spring Boot server
+      # 1. Spring Boot 서버 중지
       - name: Stop Spring Boot Server
-        run: echo "${{ secrets.PASSWORD }}" | ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
+        run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
 
-      # 2. Build the project using Maven
+      # 2. Maven을 사용해 프로젝트 빌드
       - name: Build with Maven
-        run: |
-          echo "${{ secrets.PASSWORD }}" | ssh -p 8122 api@123.100.174.98 "cd /home/api/git/user && mvn clean package"
+        run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "cd /home/api/git/user && mvn clean package"
 
-      # 3. Start the Spring Boot server
+      # 3. Spring Boot 서버 시작
       - name: Start Spring Boot Server
-        run: echo "${{ secrets.PASSWORD }}" | ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
+        run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
