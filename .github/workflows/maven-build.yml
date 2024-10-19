@@ -1,4 +1,4 @@
-name: maven build Pipeline
+name: Maven Build Pipeline
 
 on:
   push:
@@ -14,10 +14,15 @@ jobs:
       - name: Stop Spring Boot Server
         run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh stop"
 
-      # 2. Maven을 사용해 프로젝트 빌드
+      # 2. 원격 기준으로 강제 동기화 (fetch + reset --hard)
+      - name: Force Sync with Remote Repository
+        run: |
+          sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "cd /home/api/git/user && git fetch origin master && git reset --hard origin/master"
+
+      # 3. Maven을 사용해 프로젝트 빌드
       - name: Build with Maven
         run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "cd /home/api/git/user && mvn clean package"
 
-      # 3. Spring Boot 서버 시작
+      # 4. Spring Boot 서버 시작
       - name: Start Spring Boot Server
         run: sshpass -p "${{ secrets.PASSWORD }}" ssh -p 8122 api@123.100.174.98 "/home/api/.spring-server.sh start"
