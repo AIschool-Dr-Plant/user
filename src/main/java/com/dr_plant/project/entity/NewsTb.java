@@ -12,13 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SensorDataTb extends BaseTb {
+public class NewsTb extends BaseTb {
 
-	private String d_id;
-	private String hum;
-	private String temp;
-	private String ws;
-	private String wd;
-	private String rf;
-	private LocalDateTime measer_dt;
+	private Integer newsId;
+	private String pub;
+	private String title;
+	private String reporter;
+	private String url;
+	private LocalDateTime pubDt;
 }

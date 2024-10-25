@@ -1,19 +1,23 @@
 package com.dr_plant.project.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/main")
 public class MainController {
 	
-	@RequestMapping("/")
-	public String main() {
+	@GetMapping("/")
+	public String test() {
+		System.out.println("/main/index");
 		return "main";
 	}
 	
-	@RequestMapping("/main")
-	public String test() {
-		return "index";
+	@GetMapping("/main/tables")
+	public String login() {
+		System.out.println("/main/tables");
+		return "tables";
 	}
 	
 }
