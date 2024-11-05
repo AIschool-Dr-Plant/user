@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/main")
 public class MainController {
-	
+
 	@GetMapping("/")
 	public String test() {
 		System.out.println("/main/index");
 		return "main";
 	}
-	
-	@GetMapping("/main/tables")
+
+	@GetMapping("/tables")
 	public String login() {
 		System.out.println("/main/tables");
 		return "tables";
 	}
-	
+
 }
