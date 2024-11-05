@@ -8,15 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = "com.dr_plant.project.mapper") // 매퍼 스캔 설정
 public class ProjectApplication {
 	
-
 	public static void main(String[] args) {
-		String profile = System.getenv("PROJECT_PROFILE");
-		if (profile == null) {
-			profile = "local"; // 기본값 설정
-		}
-		System.setProperty("spring.profiles.active", profile);
-
-
+		String profile = System.getProperty("spring.profiles.active");
+		if (profile == null) System.setProperty("spring.profiles.active", "local");
 		SpringApplication.run(ProjectApplication.class, args);
 	}
 
