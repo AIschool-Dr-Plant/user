@@ -75,11 +75,10 @@
 	      });
 	  }
 	
-	  // 아래는 데모를 위한 UI 코드입니다.
+
 	  displayToken()
 	  function displayToken() {
 	    var token = getCookie('authorize-access-token');
-	
 	    if(token) {
 	      Kakao.Auth.setAccessToken(token);
 	      document.querySelector('#token-result').innerText = 'login success, ready to send a message';
