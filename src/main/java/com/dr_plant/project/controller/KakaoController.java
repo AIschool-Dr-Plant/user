@@ -10,16 +10,16 @@ public class KakaoController {
 
 	@GetMapping("/map")
 	public String kakaomap() {
-		return "/kakao/kakaomap"; // kakaomap.html 템플릿을 반환
+		return "kakao/kakaomap"; // kakaomap.html 템플릿을 반환
 	}
 
 	@GetMapping("/me")
 	public String kakaome() {
-		return "/kakao/kakaome"; // kakaotok.html 템플릿을 반환
+		return "kakao/kakaome"; // kakaotok.html 템플릿을 반환
 	}
 
 	@GetMapping("/me2")
 	public String kakaome2() {
-		return "/kakao/help"; // kakaotok.html 템플릿을 반환
+		return "kakao/help"; // kakaotok.html 템플릿을 반환
 	}
 }
