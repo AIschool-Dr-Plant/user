@@ -20,7 +20,7 @@
 	<script>
 	  function loginWithKakao() {
 	    Kakao.Auth.authorize({
-	      redirectUri: 'https://123.100.174.98:8184/kakao/me2',
+	      redirectUri: 'https://123.100.174.98:8184/api/kakaoLogin',
 	      state: 'sendme_feed',
 	      scope: 'talk_message', // 앱 동의 항목 설정 및 사용자 동의 필요
 	    });
