@@ -1,0 +1,56 @@
+<!-- 카카오맵 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오 맵 예제</title>
+    <script type="text/javascript"
+        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9ccbc0ffcb02d0558ee7d328ad207c4c"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="display: flex; justify-content: center; align-content: center; align-items: center; flex-direction: column; margin: 100px auto; ">카카오 맵 예제</h1>
+    <h2 style="text-align: center;">나주 시청 + 임의 장소 2</h2>
+    <div id="map"></div>
+
+    <script>
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(35.015984, 126.711066),  // 초기 화면 나주 시청 좌표 35.015984, 126.711066
+            													   // 광주 35.169622, 126.868701
+            level: 3
+        };
+
+        var map = new kakao.maps.Map(container, options);  // 지도를 생성합니다
+        
+        // 여러 개의 마커 정보를 담은 배열
+        var markerPositions = [
+        	new kakao.maps.LatLng(35.015984, 126.711066), // 나주 시청 
+            new kakao.maps.LatLng(35.0165, 126.7180),   // 
+            new kakao.maps.LatLng(35.0142, 126.7127)    // 
+        	
+        ];
+        
+     	// 지도에 마커를 생성하고 표시한다
+     	// 배열에 담긴 위치들에 마커를 생성한다
+        for (var i = 0; i < markerPositions.length; i++) {
+            var marker = new kakao.maps.Marker({
+                position: markerPositions[i], // 마커의 좌표
+                map: map // 마커를 표시할 지도 객체
+            });
+        }
+     	
+		//var marker = new kakao.maps.Marker({
+		//    position: new kakao.maps.LatLng(35.0358529, 126.7186503), // 마커의 좌표
+		//    position: new kakao.maps.LatLng(35.0358520, 126.7186503), // 마커의 좌표
+		//    map: map // 마커를 표시할 지도 객체
+		//});
+    </script>
+</body>
+</html>

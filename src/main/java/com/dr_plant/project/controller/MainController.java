@@ -26,7 +26,6 @@ import com.dr_plant.project.mapper.TemPestMapper;
 @Controller
 public class MainController {
 	
-
     @Autowired
     private IntLocMapper intLocMapper;
     
@@ -102,3 +101,4 @@ public class MainController {
     }
 
 }
+
