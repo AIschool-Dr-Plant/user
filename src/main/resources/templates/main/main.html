@@ -41,17 +41,9 @@
         	<table border="1">
 				<tr th:each="news : ${latestNews}">
 					<td>
-					    <div>
-					        <img th:src="${news.imageUrl}" style="width:100px; height:80px" 
-					             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-					        <div style="width:100px; height:80px; display: none; align-items: center; justify-content: center; border: 1px solid black; ">
-					            <span th:text="${news.PUB}"></span>
-					        </div>
-					    </div>
-					</td>
-					<td>
 						<a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
 						<br>
+						<span th:text="${news.PUB}"></span>
 						<span th:text="${news.REPORTER}"></span>
 						<span th:text="${news.PUB_DT}"></span>
 					</td>

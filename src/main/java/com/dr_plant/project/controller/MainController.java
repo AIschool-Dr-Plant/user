@@ -16,7 +16,7 @@ import com.dr_plant.project.entity.NajuWeatherTb;
 import com.dr_plant.project.entity.NewsTb;
 import com.dr_plant.project.entity.TemPestTb;
 import com.dr_plant.project.mapper.ExtrmnCmpMapper;
-import com.dr_plant.project.mapper.ImageService;
+
 import com.dr_plant.project.mapper.IntLocMapper;
 import com.dr_plant.project.mapper.NajuWeatherMapper;
 import com.dr_plant.project.mapper.NewsMapper;
@@ -38,8 +38,6 @@ public class MainController {
     @Autowired
     private NewsMapper newsMapper;
     
-    @Autowired
-    private ImageService imageService;
     
     @Autowired
     private NajuWeatherMapper najuWeatherMapper;
@@ -65,11 +63,6 @@ public class MainController {
         
         // Fetch the latest news items
         List<NewsTb> latestNews = newsMapper.findLatestNews();
-        // Fetch and set image URLs for each news item
-        latestNews.forEach(news -> {
-            imageService.extractImageUrl(news.getURL()).ifPresent(news::setImageUrl);
-        });
-
         model.addAttribute("latestNews", latestNews);
         
         // Fetch the latest weather data
