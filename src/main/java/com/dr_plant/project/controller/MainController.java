@@ -42,14 +42,17 @@ public class MainController {
     @Autowired
     private NajuWeatherMapper najuWeatherMapper;
     
+    // 메인 페이지 요청
     @GetMapping("/main")
     public String main(Model model) {
         System.out.println("//main//");
         
+        // 모델에 'cusId'가 있는지 확인
         if (model.containsAttribute("cusId")) {
             String cusId = (String) model.getAttribute("cusId");
             model.addAttribute("cusId", cusId);
             
+            // 고객 ID로 등록된 위치 정보를 조회
             List<IntLocTb> intLocList = intLocMapper.findBycusId(cusId);
             if (!intLocList.isEmpty()) {
                 model.addAttribute("intLocList", intLocList);
@@ -61,11 +64,11 @@ public class MainController {
             model.addAttribute("error_cusId", "사용자 정보를 찾을 수 없습니다.");
         }
         
-        // Fetch the latest news items
+        // 최신 뉴스 항목을 조회
         List<NewsTb> latestNews = newsMapper.findLatestNews();
         model.addAttribute("latestNews", latestNews);
         
-        // Fetch the latest weather data
+        // 최신 날씨 데이터를 조회
         List<NajuWeatherTb> latestWeatherData = najuWeatherMapper.findLatestWeatherData();
         model.addAttribute("latestWeatherData", latestWeatherData);
 

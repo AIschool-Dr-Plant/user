@@ -2,107 +2,110 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Main</title>
-    <link rel="stylesheet" href="./css/mainStyle.css">
-    <script src="./js/mainScript.js" defer></script>
+    <link rel="stylesheet" href="./css/mainStyle.css"> <!-- 메인 페이지 스타일링 -->
+    <script src="./js/mainScript.js" defer></script> <!-- 메인 페이지 스크립트 -->
 </head>
 <body>
-    <header>
-        <img src="./assets/img/Dr.Plant_logo.png" style="width:50px; height:50px">
-        <div th:if="${error_cusId}" th:text="${error_cusId}"></div>
-        <span th:text="${cusId+'님'}"></span>
-        <a href="/mypage"><span>마이페이지</span></a>
-        <nav>
-            <a href=""><span>농업뉴스</span></a>
-            <a href=""><span>병해충도감</span></a>
-        </nav>
-    </header>
+    <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+    <div th:replace="fragments/header :: siteHeader"></div>
+    
     <main>
+        <!-- 관심 위치 병해충 예찰 섹션 -->
         <article>
             <h3>관심위치 병해충 예찰</h3>
-            <a href="">+관심위치</a>
+            <a th:href="@{/mypage(cusId=${cusId})}">+관심위치</a> <!-- 관심 위치 추가 링크 -->
+            
+            <!-- 관심 위치 목록이 있을 경우 드롭다운 표시 -->
             <div th:if="${locNickList != null}">
                 <label for="locNickDropdown">관심위치</label>
-                <select id="locNickDropdown" name="locNickDropdown" onchange="fetchPestData()">
-                    <!-- <option value="">Select Location</option> -->
+                <select id="locNickDropdown" name="locNickDropdown" onchange="fetchPestData()"> <!-- 드롭다운 선택 시 데이터 불러오기 -->
                     <option th:each="locNick : ${locNickList}" th:text="${locNick}" th:value="${locNick}" th:selected="${locNick == locNickList[0]}"></option>
                 </select>
             </div>
+            
+            <!-- 병해충 데이터를 표시할 테이블 -->
             <table id="tempestTable" border="1"></table>
-            <img src="./assets/img/label.png" style="width:200px; height:20px">
-           	<br>
-            <span id="locNick"></span>
+            <img src="./assets/img/label.png" style="width:200px; height:20px"> <!-- 레이블 이미지 -->
+            <br>
+            <span id="locNick"></span> <!-- 선택된 위치 표시 -->
             <span>인근 방제업체 리스트</span>
+            <!-- 방제 업체 데이터를 표시할 테이블 -->
             <table id="companyTable" border="1"></table>
         </article>
         
+        <!-- 농업 뉴스 섹션 -->
         <article>
-        	<h3>농업뉴스</h3>
-        	<a href="">더보기</a>
-        	<table border="1">
-				<tr th:each="news : ${latestNews}">
-					<td>
-						<a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
-						<br>
-						<span th:text="${news.PUB}"></span>
-						<span th:text="${news.REPORTER}"></span>
-						<span th:text="${news.PUB_DT}"></span>
-					</td>
-				</tr>
-		    </table>
+            <h3>농업뉴스</h3>
+            <a th:href="@{/news(cusId=${cusId})}">더보기</a> <!-- 뉴스 더보기 링크 -->
+            <table border="1">
+                <tr th:each="news : ${latestNews}">
+                    <td>
+                        <!-- 뉴스 제목 및 링크 -->
+                        <a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
+                        <br>
+                        <!-- 뉴스 발행사, 기자 및 발행일 -->
+                        <span th:text="${news.PUB}"></span>
+                        <span th:text="${news.REPORTER}"></span>
+                        <span th:text="${news.PUB_DT}"></span>
+                    </td>
+                </tr>
+            </table>
         </article>
         
+        <!-- 날씨 예측 섹션 -->
         <article>
-        	<h3>날씨예측</h3>
-			<table border="1">
-			    <tr>
-			        <th>항목</th>
-			        <th>오늘</th>
-			        <th>내일</th>
-			        <th>모레</th>
-			    </tr>
-			    <tr>
-			        <td>AP</td>
-			        <td th:text="${latestWeatherData[2].AP}"></td>
-			        <td th:text="${latestWeatherData[1].AP}"></td>
-			        <td th:text="${latestWeatherData[0].AP}"></td>
-			    </tr>
-			    <tr>
-			        <td>HUM</td>
-			        <td th:text="${latestWeatherData[2].HUM}"></td>
-			        <td th:text="${latestWeatherData[1].HUM}"></td>
-			        <td th:text="${latestWeatherData[0].HUM}"></td>
-			    </tr>
-			    <tr>
-			        <td>TEMP</td>
-			        <td th:text="${latestWeatherData[2].TEMP}"></td>
-			        <td th:text="${latestWeatherData[1].TEMP}"></td>
-			        <td th:text="${latestWeatherData[0].TEMP}"></td>
-			    </tr>
-			    <tr>
-			        <td>WS</td>
-			        <td th:text="${latestWeatherData[2].WS}"></td>
-			        <td th:text="${latestWeatherData[1].WS}"></td>
-			        <td th:text="${latestWeatherData[0].WS}"></td>
-			    </tr>
-			    <tr>
-			        <td>WD</td>
-			        <td th:text="${latestWeatherData[2].WD}"></td>
-			        <td th:text="${latestWeatherData[1].WD}"></td>
-			        <td th:text="${latestWeatherData[0].WD}"></td>
-			    </tr>
-			    <tr>
-			        <td>RF</td>
-			        <td th:text="${latestWeatherData[2].RF}"></td>
-			        <td th:text="${latestWeatherData[1].RF}"></td>
-			        <td th:text="${latestWeatherData[0].RF}"></td>
-			    </tr>
-			    <tr>
-			        <td>MEAS_DT</td>
-			        <td th:text="${latestWeatherData[2].MEAS_DT}"></td>
-			        <td th:text="${latestWeatherData[1].MEAS_DT}"></td>
-			        <td th:text="${latestWeatherData[0].MEAS_DT}"></td>
-			    </tr>
-			</table>
+            <h3>날씨예측</h3>
+            <table border="1">
+                <tr>
+                    <th>항목</th>
+                    <th>오늘</th>
+                    <th>내일</th>
+                    <th>모레</th>
+                </tr>
+                <!-- 각 날씨 항목의 오늘, 내일, 모레 데이터 표시 -->
+                <tr>
+                    <td>AP</td>
+                    <td th:text="${latestWeatherData[2].AP}"></td>
+                    <td th:text="${latestWeatherData[1].AP}"></td>
+                    <td th:text="${latestWeatherData[0].AP}"></td>
+                </tr>
+                <tr>
+                    <td>HUM</td>
+                    <td th:text="${latestWeatherData[2].HUM}"></td>
+                    <td th:text="${latestWeatherData[1].HUM}"></td>
+                    <td th:text="${latestWeatherData[0].HUM}"></td>
+                </tr>
+                <tr>
+                    <td>TEMP</td>
+                    <td th:text="${latestWeatherData[2].TEMP}"></td>
+                    <td th:text="${latestWeatherData[1].TEMP}"></td>
+                    <td th:text="${latestWeatherData[0].TEMP}"></td>
+                </tr>
+                <tr>
+                    <td>WS</td>
+                    <td th:text="${latestWeatherData[2].WS}"></td>
+                    <td th:text="${latestWeatherData[1].WS}"></td>
+                    <td th:text="${latestWeatherData[0].WS}"></td>
+                </tr>
+                <tr>
+                    <td>WD</td>
+                    <td th:text="${latestWeatherData[2].WD}"></td>
+                    <td th:text="${latestWeatherData[1].WD}"></td>
+                    <td th:text="${latestWeatherData[0].WD}"></td>
+                </tr>
+                <tr>
+                    <td>RF</td>
+                    <td th:text="${latestWeatherData[2].RF}"></td>
+                    <td th:text="${latestWeatherData[1].RF}"></td>
+                    <td th:text="${latestWeatherData[0].RF}"></td>
+                </tr>
+                <tr>
+                    <td>MEAS_DT</td>
+                    <td th:text="${latestWeatherData[2].MEAS_DT}"></td>
+                    <td th:text="${latestWeatherData[1].MEAS_DT}"></td>
+                    <td th:text="${latestWeatherData[0].MEAS_DT}"></td>
+                </tr>
+            </table>
         </article>
     </main>
 </body>

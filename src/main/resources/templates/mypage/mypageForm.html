@@ -2,8 +2,125 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>mypage</title>
+    <style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+
+        .toggle-switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 19px;
+            width: 19px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+	<script th:inline="javascript">
+	   const cusId = /*[[${cusId}]]*/ 'null';
+	</script>
+	<script>
+	    document.addEventListener("DOMContentLoaded", function() {
+	        const toggleSwitch = document.querySelector("input[type='checkbox']");
+	        const cusId = document.querySelector(".toggle-switch").getAttribute("data-cusid");
+	
+	        toggleSwitch.addEventListener("change", function() {
+	            const isChecked = toggleSwitch.checked ? 1 : 0;
+	
+	            fetch('/updateAlarmAgree', {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                body: `cusId=${cusId}&alarmAgree=${isChecked}`
+	            })
+	            .then(response => response.text())
+	            .then(data => {
+	                if (data === 'success') {
+	                    alert('알림 서비스 설정이 업데이트되었습니다.');
+	                } else {
+	                    alert('업데이트에 실패했습니다.');
+	                }
+	            });
+	        });
+	    });
+	</script>
+    
 </head>
 <body>
-    <h2>마이페이지</h2>
+	<!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+	<div th:replace="fragments/header :: siteHeader"></div>
+	<main>
+	<article>
+		<h3>마이페이지</h3>
+		<table border="1">
+			<tr>
+				<td>카카오 알림서비스 사용여부</td>
+				<td>
+					<label class="toggle-switch" th:attr="data-cusid=${cusId}">
+					    <input type="checkbox" th:checked="${alarmAgree == 1}">
+					    <span class="slider"></span>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><a href='/login/newpw'>새 비밀번호 설정</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">로그아웃</td>
+			</tr>
+			<tr>
+				<td colspan="2">탈퇴</td>
+			</tr>
+		</table>
+	</article>
+	<article>
+		<h3>관심위치리스트</h3>
+		<table border="1">
+             <tr>
+                 <th>LOC_NICK</th>
+                 <th>DEV_ID</th>
+                 <th>REG_DT</th>
+                 <th>RGN_ID</th>
+             </tr>
+             <tr th:each="location : ${locationList}">
+                 <td th:text="${location.LOC_NICK}"></td>
+                 <td th:text="${location.DEV_ID}"></td>
+                 <td th:text="${#strings.substring(location.REG_DT, 0, 10)}"></td>
+                 <td th:text="${location.RGN_ID}"></td>
+             </tr>
+         </table>
+	</article>
+	</main>
 </body>
 </html>

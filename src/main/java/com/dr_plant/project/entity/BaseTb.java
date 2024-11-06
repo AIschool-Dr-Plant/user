@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class BaseTb {
 
-	private String regId;
-	private String modId;
-	private LocalDateTime regDt;
-	private LocalDateTime modDt;
+	private String REG_ID;
+	private String MOD_ID;
+	private LocalDateTime REG_DT;
+	private LocalDateTime MOD_DT;
 }
