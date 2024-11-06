@@ -14,10 +14,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class NewsTb extends BaseTb {
 
-	private Integer newsId;
-	private String pub;
-	private String title;
-	private String reporter;
-	private String url;
-	private LocalDateTime pubDt;
+	private Integer NEWS_ID;
+	private String PUB;
+	private String TITLE;
+	private String REPORTER;
+	private String URL;
+	private LocalDateTime PUB_DT;
+	private String imageUrl;
 }

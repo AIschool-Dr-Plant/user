@@ -10,7 +10,12 @@
         <br>
         <input type="password" id="cusPw" name="cusPw" placeholder="비밀번호를 입력해주세요" required>
         <br>
+        <div>
+            <input type="checkbox" id="adminLogin" name="adminLogin" />
+            <label for="adminLogin">관리자 로그인</label>
+        </div>
         <button type="submit">로그인</button>
+
     </form>
     <p th:if="${error}" th:text="${error}"></p>
     <button type="button" onclick="location.href='/login/signup'">회원가입</button>

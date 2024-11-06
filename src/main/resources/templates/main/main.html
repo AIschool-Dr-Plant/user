@@ -1,10 +1,117 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title>Main</title>
+    <link rel="stylesheet" href="./css/mainStyle.css">
+    <script src="./js/mainScript.js" defer></script>
 </head>
 <body>
-    <h2>환영합니다!</h2>
-    <p th:text="${cusId}"></p>
+    <header>
+        <img src="./assets/img/Dr.Plant_logo.png" style="width:50px; height:50px">
+        <div th:if="${error_cusId}" th:text="${error_cusId}"></div>
+        <span th:text="${cusId+'님'}"></span>
+        <a href="/mypage"><span>마이페이지</span></a>
+        <nav>
+            <a href=""><span>농업뉴스</span></a>
+            <a href=""><span>병해충도감</span></a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h3>관심위치 병해충 예찰</h3>
+            <a href="">+관심위치</a>
+            <div th:if="${locNickList != null}">
+                <label for="locNickDropdown">관심위치</label>
+                <select id="locNickDropdown" name="locNickDropdown" onchange="fetchPestData()">
+                    <!-- <option value="">Select Location</option> -->
+                    <option th:each="locNick : ${locNickList}" th:text="${locNick}" th:value="${locNick}" th:selected="${locNick == locNickList[0]}"></option>
+                </select>
+            </div>
+            <table id="tempestTable" border="1"></table>
+            <img src="./assets/img/label.png" style="width:200px; height:20px">
+           	<br>
+            <span id="locNick"></span>
+            <span>인근 방제업체 리스트</span>
+            <table id="companyTable" border="1"></table>
+        </article>
+        
+        <article>
+        	<h3>농업뉴스</h3>
+        	<a href="">더보기</a>
+        	<table border="1">
+				<tr th:each="news : ${latestNews}">
+					<td>
+					    <div>
+					        <img th:src="${news.imageUrl}" style="width:100px; height:80px" 
+					             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+					        <div style="width:100px; height:80px; display: none; align-items: center; justify-content: center; border: 1px solid black; ">
+					            <span th:text="${news.PUB}"></span>
+					        </div>
+					    </div>
+					</td>
+					<td>
+						<a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
+						<br>
+						<span th:text="${news.REPORTER}"></span>
+						<span th:text="${news.PUB_DT}"></span>
+					</td>
+				</tr>
+		    </table>
+        </article>
+        
+        <article>
+        	<h3>날씨예측</h3>
+			<table border="1">
+			    <tr>
+			        <th>항목</th>
+			        <th>오늘</th>
+			        <th>내일</th>
+			        <th>모레</th>
+			    </tr>
+			    <tr>
+			        <td>AP</td>
+			        <td th:text="${latestWeatherData[2].AP}"></td>
+			        <td th:text="${latestWeatherData[1].AP}"></td>
+			        <td th:text="${latestWeatherData[0].AP}"></td>
+			    </tr>
+			    <tr>
+			        <td>HUM</td>
+			        <td th:text="${latestWeatherData[2].HUM}"></td>
+			        <td th:text="${latestWeatherData[1].HUM}"></td>
+			        <td th:text="${latestWeatherData[0].HUM}"></td>
+			    </tr>
+			    <tr>
+			        <td>TEMP</td>
+			        <td th:text="${latestWeatherData[2].TEMP}"></td>
+			        <td th:text="${latestWeatherData[1].TEMP}"></td>
+			        <td th:text="${latestWeatherData[0].TEMP}"></td>
+			    </tr>
+			    <tr>
+			        <td>WS</td>
+			        <td th:text="${latestWeatherData[2].WS}"></td>
+			        <td th:text="${latestWeatherData[1].WS}"></td>
+			        <td th:text="${latestWeatherData[0].WS}"></td>
+			    </tr>
+			    <tr>
+			        <td>WD</td>
+			        <td th:text="${latestWeatherData[2].WD}"></td>
+			        <td th:text="${latestWeatherData[1].WD}"></td>
+			        <td th:text="${latestWeatherData[0].WD}"></td>
+			    </tr>
+			    <tr>
+			        <td>RF</td>
+			        <td th:text="${latestWeatherData[2].RF}"></td>
+			        <td th:text="${latestWeatherData[1].RF}"></td>
+			        <td th:text="${latestWeatherData[0].RF}"></td>
+			    </tr>
+			    <tr>
+			        <td>MEAS_DT</td>
+			        <td th:text="${latestWeatherData[2].MEAS_DT}"></td>
+			        <td th:text="${latestWeatherData[1].MEAS_DT}"></td>
+			        <td th:text="${latestWeatherData[0].MEAS_DT}"></td>
+			    </tr>
+			</table>
+        </article>
+    </main>
 </body>
 </html>
