@@ -68,4 +68,26 @@ public class MyPageController {
 	        return "fail";
 	    }
 	}
+	
+	@PostMapping("/registerLocation")
+	@ResponseBody
+	public String registerLocation(
+	        @RequestParam("locNick") String locNick,
+	        @RequestParam("devId") String devId,
+	        @RequestParam("rgnId") String rgnId,
+	        @RequestParam("cusId") String cusId) {
+	    try {
+	        IntLocTb newLocation = new IntLocTb();
+	        newLocation.setLOC_NICK(locNick);
+	        newLocation.setDEV_ID(devId);
+	        newLocation.setRGN_ID(rgnId);
+	        newLocation.setCUS_ID(cusId);
+
+	        intLocMapper.insertLocation(newLocation); // 삽입 메서드 호출
+	        return "success";
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "fail";
+	    }
+	}
 }

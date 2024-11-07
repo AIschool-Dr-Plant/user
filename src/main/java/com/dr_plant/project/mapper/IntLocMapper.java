@@ -28,5 +28,7 @@ public interface IntLocMapper {
 	@Delete("DELETE FROM INT_LOC_TB WHERE LOC_ID = #{locId}")
 	void deleteByLocId(Integer locId);
 	
+	@Insert("INSERT INTO INT_LOC_TB (LOC_NICK, DEV_ID, RGN_ID, CUS_ID, REG_ID, REG_DT) VALUES (#{LOC_NICK}, #{DEV_ID}, #{RGN_ID}, #{CUS_ID}, #{CUS_ID}, NOW())")
+	void insertLocation(IntLocTb location);
 
 }
