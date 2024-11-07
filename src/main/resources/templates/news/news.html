@@ -5,6 +5,26 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
-    <h2>농업뉴스</h2>
+    <article>
+	    <h3>농업뉴스</h3>
+	    <table border="1">
+	        <tr th:each="news : ${News}">
+	            <td>
+	                <a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
+	                <br>
+	                <span th:text="${news.PUB}"></span>
+	                <span th:text="${news.REPORTER}"></span>
+	                <span th:text="${news.PUB_DT}"></span>
+	            </td>
+	        </tr>
+	    </table>
+		<div>
+		     <a th:href="@{/news(page=${currentPage - 1})}" th:if="${currentPage > 1}">이전</a>
+		     <span th:each="i : ${#numbers.sequence(startPage, endPage)}">
+		         <a th:href="@{/news(page=${i})}" th:text="${i}" th:classappend="${i == currentPage} ? 'current-page' : ''"></a>
+		     </span>
+		     <a th:href="@{/news(page=${currentPage + 1})}" th:if="${currentPage < totalPages}">다음</a>
+		</div>
+	</article>
 </body>
 </html>

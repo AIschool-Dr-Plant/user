@@ -75,7 +75,37 @@
 	        });
 	    });
 	</script>
-    
+    <script>
+	    document.addEventListener("DOMContentLoaded", function() {
+	        const deleteButtons = document.querySelectorAll(".delete-button");
+	
+	        deleteButtons.forEach(button => {
+	            button.addEventListener("click", function() {
+	                const locId = button.getAttribute("data-locid");
+	
+	                if (confirm("이 위치를 삭제하시겠습니까?")) {
+	                    fetch('/deleteLocation', {
+	                        method: 'POST',
+	                        headers: {
+	                            'Content-Type': 'application/x-www-form-urlencoded'
+	                        },
+	                        body: `locId=${locId}`
+	                    })
+	                    .then(response => response.text())
+	                    .then(data => {
+	                        if (data === 'success') {
+	                            alert('위치가 삭제되었습니다.');
+	                            location.reload(); // 페이지를 새로고침하여 변경 사항 반영
+	                        } else {
+	                            alert('삭제에 실패했습니다.');
+	                        }
+	                    });
+	                }
+	            });
+	        });
+	    });
+    </script>
+
 </head>
 <body>
 	<!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
@@ -108,18 +138,42 @@
 		<h3>관심위치리스트</h3>
 		<table border="1">
              <tr>
-                 <th>LOC_NICK</th>
-                 <th>DEV_ID</th>
-                 <th>REG_DT</th>
-                 <th>RGN_ID</th>
+                 <th>위치별명</th>
+                 <th>장치ID</th>
+                 <th>등록일</th>
+                 <th>위치</th>
+                 <th>삭제</th>
              </tr>
              <tr th:each="location : ${locationList}">
                  <td th:text="${location.LOC_NICK}"></td>
                  <td th:text="${location.DEV_ID}"></td>
                  <td th:text="${#strings.substring(location.REG_DT, 0, 10)}"></td>
-                 <td th:text="${location.RGN_ID}"></td>
+                 <td th:text="${location.RGN_NM}"></td>
+                 <td>
+                 	<button type="button" th:attr="data-locid=${location.LOC_ID}" class="delete-button">삭제하기</button>
+                 </td>
              </tr>
          </table>
+	</article>
+	<article>
+		<h3>관심위치 등록하기</h3>
+		<form id="addLocationForm">
+			<table border="1">
+				<tr>
+	                <td>위치별명</td>
+	                <td><input type="text" name="locNick" required></td>
+	            </tr>
+	            <tr>
+	                <td>장치ID</td>
+	                <td><input type="text" name="devId" required></td>
+	            </tr>
+	            <tr>
+	                <td>위치 ID</td>
+	                <td><input type="text" name="rgnId" required></td>
+	            </tr>
+			</table>
+	    	<button type="button" id="registerLocationButton">등록하기</button>
+    	</form>
 	</article>
 	</main>
 </body>

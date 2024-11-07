@@ -9,12 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class IntLocTb extends BaseTb {
-
-	private Integer LOC_ID;
-	private String LOC_NICK;
-	private String CUS_ID;
-	private String DEV_ID;
+public class VeiwRgnTb extends BaseTb {
 	private String RGN_ID;
 	private String RGN_NM;
+	private String AREA_CD;
 }

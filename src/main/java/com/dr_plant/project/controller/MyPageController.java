@@ -24,6 +24,8 @@ public class MyPageController {
     
     @Autowired
     private IntLocMapper intLocMapper;
+    
+
 	
 	//마이페이지(/mypage)
 	@GetMapping("/mypage")
@@ -36,7 +38,7 @@ public class MyPageController {
             if (customer != null) {
                 model.addAttribute("alarmAgree", customer.getALARM_AGREE());
             }
-            List<IntLocTb> locationList = intLocMapper.findBycusId(cusId);
+            List<IntLocTb> locationList = intLocMapper.findBycusIdWithRegionName(cusId);
             model.addAttribute("locationList", locationList);
             model.addAttribute("cusId", cusId);
         }
@@ -53,5 +55,17 @@ public class MyPageController {
 	        return "success";
 	    }
 	    return "fail";
+	}
+	
+	@PostMapping("/deleteLocation")
+	@ResponseBody
+	public String deleteLocation(@RequestParam("locId") Integer locId) {
+	    try {
+	        intLocMapper.deleteByLocId(locId); // 삭제 메서드 호출
+	        return "success";
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "fail";
+	    }
 	}
 }
