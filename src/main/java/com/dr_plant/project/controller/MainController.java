@@ -88,12 +88,27 @@ public class MainController {
     //locNick을 바탕으로 RGN_ID를 얻어서 ExtrmnCmp테이블의 값을 불러오기
     @GetMapping("/getCompanies")
     @ResponseBody
-    public List<ExtrmnCmpTb> getCompanies(@RequestParam String locNick) {
+    public List<ExtrmnCmpTb> getCompanies(
+            @RequestParam String locNick,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        
         IntLocTb location = intLocMapper.findByLocNick(locNick).orElse(null);
         if (location != null) {
-            return extrmnCmpMapper.findByrgnId(location.getRGN_ID());
+            int offset = page * size;
+            return extrmnCmpMapper.findByrgnIdWithPagination(location.getRGN_ID(), size, offset);
         }
         return List.of();
+    }
+
+    @GetMapping("/getCompanyCount")
+    @ResponseBody
+    public int getCompanyCount(@RequestParam String locNick) {
+        IntLocTb location = intLocMapper.findByLocNick(locNick).orElse(null);
+        if (location != null) {
+            return extrmnCmpMapper.countByrgnId(location.getRGN_ID());
+        }
+        return 0;
     }
 
 }

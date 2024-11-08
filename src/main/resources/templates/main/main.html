@@ -3,7 +3,288 @@
 <head>
     <title>Main</title>
     <link rel="stylesheet" href="./css/mainStyle.css"> <!-- 메인 페이지 스타일링 -->
-    <script src="./js/mainScript.js" defer></script> <!-- 메인 페이지 스크립트 -->
+    <style>
+	    .page-button {
+	        margin: 0 5px;
+	        padding: 5px 10px;
+	        cursor: pointer;
+	    }
+	    .page-button.active {
+	        background-color: #007bff;
+	        color: #fff;
+	        border: none;
+	        
+	    #pagination {
+		    display: block; /* visibility 확인 */
+		}
+	    }
+	</style>
+    <!--<script src="./js/mainScript.js" defer></script> <!-- 메인 페이지 스크립트 -->
+    <script type="text/javascript">
+	    async function fetchPestData() {
+	        const locNick = document.getElementById("locNickDropdown").value;
+	        const locNickElement = document.getElementById("locNick");
+	        
+	        if (locNick && locNickElement) {
+	            // 선택한 locNick 값을 id가 locNick인 <p> 태그에 표시
+	            locNickElement.innerText = locNick;
+	            //TempPest데이터를 패치함
+	            const response = await fetch(`/getPestData?locNick=${locNick}`);
+	            const data = await response.json();
+	            populatePestTable(data);
+	         	// Fetch companies data
+	            const companyResponse = await fetch(`/getCompanies?locNick=${locNick}`);
+	            const companyData = await companyResponse.json();
+	            populateCompanyTable(companyData);
+	        }
+	    }
+	
+	    function getColorClass(value) {
+	        switch (value) {
+	            case 1: return "green";
+	            case 2: return "yellow";
+	            case 3: return "orange";
+	            case 4: return "red";
+	            case 5: return "gray";
+	            default: return "gray"; // 기본 색상
+	        }
+	    }
+	
+	    function populatePestTable(data) {
+	    	
+	        const table = document.getElementById("tempestTable");
+	        table.innerHTML = "";  // 기존 테이블 내용 초기화
+	        data.forEach(row => {
+	            table.innerHTML += `
+	            <tr>
+	    	    	<td rowspan="6">병 피해</td>
+	    	        <td>검은무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.검은무늬병)}"></span></td>
+	    	        <td>뒷면흰가루병</td>
+	    	        <td><span class="circle ${getColorClass(row.뒷면흰가루병)}"></span></td>
+	    	        <td>줄기마름병</td>
+	    	        <td><span class="circle ${getColorClass(row.줄기마름병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>검은별무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.검은별무늬병)}"></span></td>
+	    	        <td>배갈색썩음병</td>
+	    	        <td><span class="circle ${getColorClass(row.배갈색썩음병)}"></span></td>
+	    	        <td>탄저병</td>
+	    	        <td><span class="circle ${getColorClass(row.탄저병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>겹무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.겹무늬병)}"></span></td>
+	    	        <td>붉은가지마름병</td>
+	    	        <td><span class="circle ${getColorClass(row.붉은가지마름병)}"></span></td>
+	    	        <td>푸른곰팡이병</td>
+	    	        <td><span class="circle ${getColorClass(row.푸른곰팡이병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>과수화상병</td>
+	    	        <td><span class="circle ${getColorClass(row.과수화상병)}"></span></td>
+	    	        <td>붉은별무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.붉은별무늬병)}"></span></td>
+	    	        <td>흰가루병</td>
+	    	        <td><span class="circle ${getColorClass(row.흰가루병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>그을음병</td>
+	    	        <td><span class="circle ${getColorClass(row.그을음병)}"></span></td>
+	    	        <td>잎검은점병</td>
+	    	        <td><span class="circle ${getColorClass(row.잎검은점병)}"></span></td>
+	    	        <td>흰날개무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.흰날개무늬병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>근두암종병</td>
+	    	        <td><span class="circle ${getColorClass(row.근두암종병)}"></span></td>
+	    	        <td>잿빛곰팡이병</td>
+	    	        <td><span class="circle ${getColorClass(row.잿빛곰팡이병)}"></span></td>
+	    	        <td>흰별무늬병</td>
+	    	        <td><span class="circle ${getColorClass(row.흰별무늬병)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	    	<td rowspan="9">해충 피해</td>
+	    	        <td>가루깍지벌레</td>
+	    	        <td><span class="circle ${getColorClass(row.가루깍지벌레)}"></span></td>
+	    	        <td>박쥐나방</td>
+	    	        <td><span class="circle ${getColorClass(row.박쥐나방)}"></span></td>
+	    	        <td>복숭아심식나방</td>
+	    	        <td><span class="circle ${getColorClass(row.복숭아심식나방)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>갈색매미충</td>
+	    	        <td><span class="circle ${getColorClass(row.갈색매미충)}"></span></td>
+	    	        <td>배나무둥글밑진딧물</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무둥글밑진딧물)}"></span></td>
+	    	        <td>사과알락나방</td>
+	    	        <td><span class="circle ${getColorClass(row.사과알락나방)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>꼬마배나무이</td>
+	    	        <td><span class="circle ${getColorClass(row.꼬마배나무이)}"></span></td>
+	    	        <td>배나무면충</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무면충)}"></span></td>
+	    	        <td>에모무늬잎말이나방</td>
+	    	        <td><span class="circle ${getColorClass(row.에모무늬잎말이나방)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>노랑쐐기나방</td>
+	    	        <td><span class="circle ${getColorClass(row.노랑쐐기나방)}"></span></td>
+	    	        <td>배나무방패벌레</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무방패벌레)}"></span></td>
+	    	        <td>조팝나무진딧물</td>
+	    	        <td><span class="circle ${getColorClass(row.조팝나무진딧물)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>담배거세미나방</td>
+	    	        <td><span class="circle ${getColorClass(row.담배거세미나방)}"></span></td>
+	    	        <td>배나무벌</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무벌)}"></span></td>
+	    	        <td>차응애</td>
+	    	        <td><span class="circle ${getColorClass(row.차응애)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>말매미</td>
+	    	        <td><span class="circle ${getColorClass(row.말매미)}"></span></td>
+	    	        <td>배나무벌</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무벌)}"></span></td>
+	    	        <td>콩가루벌레</td>
+	    	        <td><span class="circle ${getColorClass(row.콩가루벌레)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>명주달팽이</td>
+	    	        <td><span class="circle ${getColorClass(row.명주달팽이)}"></span></td>
+	    	        <td>배나무이</td>
+	    	        <td><span class="circle ${getColorClass(row.배나무이)}"></span></td>
+	    	        <td>긴털이리응애</td>
+	    	        <td><span class="circle ${getColorClass(row.긴털이리응애)}"></span></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>목화진딧물</td>
+	    	        <td><span class="circle ${getColorClass(row.목화진딧물)}"></span></td>
+	    	        <td>배명나방</td>
+	    	        <td><span class="circle ${getColorClass(row.배명나방)}"></span></td>
+	    	        <td></td>
+	    	        <td></td>
+	    	    </tr>
+	    	    <tr>
+	    	        <td>미국선녀벌레</td>
+	    	        <td><span class="circle ${getColorClass(row.미국선녀벌레)}"></span></td>
+	    	        <td>배혹벌</td>
+	    	        <td><span class="circle ${getColorClass(row.배혹벌)}"></span></td>
+	    	        <td></td>
+	    	        <td></td>
+	    	    </tr>
+	            `;
+	        });
+	    }
+		
+	    async function fetchCompanies(page = 0, size = 10) {
+	        const locNick = document.getElementById("locNickDropdown").value;
+	        if (locNick) {
+	            const companyResponse = await fetch(`/getCompanies?locNick=${locNick}&page=${page}&size=${size}`);
+	            const companyData = await companyResponse.json();
+	            populateCompanyTable(companyData);
+
+	            const countResponse = await fetch(`/getCompanyCount?locNick=${locNick}`);
+	            const totalCount = await countResponse.json();
+
+	            if (totalCount > 0) { // totalCount가 0이 아닌지 확인
+	                createPagination(totalCount, page, size);
+	            } else {
+	                console.warn("No data available for pagination.");
+	            }
+	        }
+	    }
+	    function populateCompanyTable(data) {
+	        const table = document.getElementById("companyTable");
+	        table.innerHTML = `
+	            <tr>
+	                <th>업체명</th>
+	                <th>연락처</th>
+	                <th>업무명</th>
+	                <th>주소</th>
+	            </tr>
+	        `;
+	        data.forEach(row => {
+	            table.innerHTML += `
+	                <tr>
+	                    <td>${row.CMP_NM}</td>
+	                    <td>${row.CONT}</td>
+	                    <td>${row.BIZ_DIV}</td>
+	                    <td><a href="">상세보기</a></td>
+	                </tr>
+	            `;
+	        });
+	    }
+
+	    function createPagination(totalCount, currentPage, size) {
+	    	console.log("Creating pagination with totalCount:", totalCount);
+	        const paginationDiv = document.getElementById("pagination");
+	        paginationDiv.innerHTML = '';
+	        const totalPages = Math.ceil(totalCount / size);
+	        console.log("Total pages:", totalPages);
+
+	        for (let i = 0; i < totalPages; i++) {
+	            const pageButton = document.createElement('button');
+	            pageButton.textContent = i + 1;
+	            pageButton.onclick = () => fetchCompanies(i, size);
+	            if (i === currentPage) {
+	                pageButton.style.fontWeight = 'bold';
+	            }
+	            paginationDiv.appendChild(pageButton);
+	        }
+	    }
+	    
+	    function loadPagination(totalPages, currentPage) {
+	        const paginationContainer = document.getElementById('pagination');
+	        paginationContainer.innerHTML = ''; // Clear existing buttons
+
+	        for (let i = 0; i < totalPages; i++) {
+	            const button = document.createElement('button');
+	            button.textContent = i + 1;
+	            button.classList.add('page-button');
+	            button.onclick = () => {
+	                loadCompanies(i); // Function to load company data for the specific page
+	            };
+	            if (i === currentPage) {
+	                button.classList.add('active'); // Highlight the current page
+	            }
+	            paginationContainer.appendChild(button);
+	        }
+	    }
+
+	    // Example call to the pagination function with dummy values
+	    document.addEventListener('DOMContentLoaded', function () {
+	        fetch('/getCompanyCount?locNick=yourLocNick') // Replace with the actual locNick value or variable
+	            .then(response => response.json())
+	            .then(totalCount => {
+	                const size = 10; // Same size as in your controller
+	                const totalPages = Math.ceil(totalCount / size);
+	                loadPagination(totalPages, 0);
+	            });
+	    });
+
+	    function loadCompanies(page) {
+	        const locNick = 'yourLocNick'; // Replace with a dynamic value if needed
+	        const size = 10; // Same size as in your controller
+
+	        fetch(`/getCompanies?locNick=${locNick}&page=${page}&size=${size}`)
+	            .then(response => response.json())
+	            .then(data => {
+	                // Populate company data in your desired table or list
+	                console.log(data); // Replace with logic to display data in the HTML
+	            });
+	    }
+
+	    window.onload = function() {
+	        fetchPestData();
+	        fetchCompanies(); // 이 함수가 페이지 로드 시 호출되고 있는지 확인합니다.
+	    };
+    </script>
 </head>
 <body>
     <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
@@ -44,6 +325,7 @@
 	            <span>인근 방제업체 리스트</span>
 	            <!-- 방제 업체 데이터를 표시할 테이블 -->
 	            <table id="companyTable" border="1"></table>
+	            <div id="pagination"></div> <!-- 페이지네이션 버튼을 표시할 영역 -->
 	        </article>
     	</section>
     	
