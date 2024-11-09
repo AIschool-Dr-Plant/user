@@ -3,22 +3,7 @@
 <head>
     <title>Main</title>
     <link rel="stylesheet" href="./css/mainStyle.css"> <!-- 메인 페이지 스타일링 -->
-    <style>
-	    .page-button {
-	        margin: 0 5px;
-	        padding: 5px 10px;
-	        cursor: pointer;
-	    }
-	    .page-button.active {
-	        background-color: #007bff;
-	        color: #fff;
-	        border: none;
-	        
-	    #pagination {
-		    display: block; /* visibility 확인 */
-		}
-	    }
-	</style>
+
     <!--<script src="./js/mainScript.js" defer></script> <!-- 메인 페이지 스크립트 -->
     <script type="text/javascript">
 	    async function fetchPestData() {
@@ -290,7 +275,7 @@
     <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
     <div th:replace="fragments/header :: siteHeader"></div>
     
-    <main>
+    <main style="display: center;">
     	<section style="float:left; padding-right:30px;">
     		<!-- 관심 위치 병해충 예찰 섹션 -->
 	        <article>

@@ -2,19 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>extrmnCmp</title>
+    <link rel="stylesheet" href="./css/news.css"> 
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
+	
     <article>
 	    <h3>농업뉴스</h3>
 	    <table border="1">
 	        <tr th:each="news : ${News}">
-	            <td>
+	            <td class="newstitle">
 	                <a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
-	                <br>
-	                <span th:text="${news.PUB}"></span>
-	                <span th:text="${news.REPORTER}"></span>
-	                <span th:text="${news.PUB_DT}"></span>
+	            </td>
+	            <td class="newspub">
+	            	<span th:text="${news.PUB}"></span>
+	            </td>
+	            <td class="newsreporter">
+	            	<span th:text="${news.REPORTER}"></span>
+	            </td>
+	            <td class="newspub_dt">
+	            	<span th:text="${news.PUB_DT}"></span>
 	            </td>
 	        </tr>
 	    </table>
