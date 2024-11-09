@@ -1,0 +1,59 @@
+body, html {
+     margin: 0;
+     padding: 0;
+     height: 100%;
+}
+h3 {
+   	color: #19CE60;
+}
+
+a {
+	text-decoration-line: none; 
+	color:#000000;
+}
+
+article {
+	height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+table{
+	border-color:#ffffff;
+	width: 80%;
+	table-layout: fixed;
+	margin-left:200px;
+	margin-right:50px;
+    border-collapse: collapse;
+    border-top:2px solid #19CE60;
+	
+}
+
+td, th {
+	word-break:break-all;
+    height:100;
+    border: 1px solid #ddd; /* 테이블 셀의 테두리 */
+    padding: 10px;
+    text-align: left;
+    overflow: hidden; /* 내용이 셀 크기를 초과할 경우 숨기기 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 '...' 표시 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.newstitle{
+	width: 250px;
+}
+
+.newspub{
+	width: 50px;
+}
+.newsreporter{
+	width: 50px;
+}
+.newspub_dt{
+	width: 50px;
+}
+
+
