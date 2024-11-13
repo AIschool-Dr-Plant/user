@@ -4,26 +4,34 @@
     <title>Main</title>
     <link rel="stylesheet" href="./css/mainStyle.css"> <!-- 메인 페이지 스타일링 -->
 
+    <style>
+	    #pagination {
+		    display: block; /* visibility 확인 */
+		}
+
+	</style>
+
+
+
     <!--<script src="./js/mainScript.js" defer></script> <!-- 메인 페이지 스크립트 -->
     <script type="text/javascript">
+	    // 병해충 데이터를 가져오는 함수
 	    async function fetchPestData() {
 	        const locNick = document.getElementById("locNickDropdown").value;
 	        const locNickElement = document.getElementById("locNick");
-	        
 	        if (locNick && locNickElement) {
-	            // 선택한 locNick 값을 id가 locNick인 <p> 태그에 표시
 	            locNickElement.innerText = locNick;
-	            //TempPest데이터를 패치함
+	            // 병해충 데이터 fetch 및 테이블 업데이트
 	            const response = await fetch(`/getPestData?locNick=${locNick}`);
 	            const data = await response.json();
 	            populatePestTable(data);
-	         	// Fetch companies data
-	            const companyResponse = await fetch(`/getCompanies?locNick=${locNick}`);
-	            const companyData = await companyResponse.json();
-	            populateCompanyTable(companyData);
+	
+	            // 방제 업체 데이터 fetch 및 페이지네이션 처리
+	            await fetchCompanies(locNick);
 	        }
 	    }
-	
+ 		
+	 	// 상태 값에 따른 색상 클래스를 반환하는 함수
 	    function getColorClass(value) {
 	        switch (value) {
 	            case 1: return "green";
@@ -34,9 +42,9 @@
 	            default: return "gray"; // 기본 색상
 	        }
 	    }
-	
+	 	
+	 	// 병해충 데이터를 테이블에 채우는 함수
 	    function populatePestTable(data) {
-	    	
 	        const table = document.getElementById("tempestTable");
 	        table.innerHTML = "";  // 기존 테이블 내용 초기화
 	        data.forEach(row => {
@@ -166,24 +174,24 @@
 	            `;
 	        });
 	    }
-		
-	    async function fetchCompanies(page = 0, size = 10) {
-	        const locNick = document.getElementById("locNickDropdown").value;
-	        if (locNick) {
-	            const companyResponse = await fetch(`/getCompanies?locNick=${locNick}&page=${page}&size=${size}`);
-	            const companyData = await companyResponse.json();
-	            populateCompanyTable(companyData);
+	 	
+	    // 방제 업체 데이터를 가져오는 함수 (페이지네이션 포함)
+	    async function fetchCompanies(locNick, page = 0, size = 10) {
+	        const companyResponse = await fetch(`/getCompanies?locNick=${locNick}&page=${page}&size=${size}`);
+	        const companyData = await companyResponse.json();
+	        populateCompanyTable(companyData);
 
-	            const countResponse = await fetch(`/getCompanyCount?locNick=${locNick}`);
-	            const totalCount = await countResponse.json();
+	        const countResponse = await fetch(`/getCompanyCount?locNick=${locNick}`);
+	        const totalCount = await countResponse.json();
 
-	            if (totalCount > 0) { // totalCount가 0이 아닌지 확인
-	                createPagination(totalCount, page, size);
-	            } else {
-	                console.warn("No data available for pagination.");
-	            }
+	        if (totalCount > 0) {
+	            createPagination(totalCount, page, size);
+	        } else {
+	            console.warn("No data available for pagination.");
 	        }
 	    }
+	 	
+	 	// 방제 업체 테이블을 채우는 함수
 	    function populateCompanyTable(data) {
 	        const table = document.getElementById("companyTable");
 	        table.innerHTML = `
@@ -205,18 +213,17 @@
 	            `;
 	        });
 	    }
-
+		
+	    // 페이지네이션 버튼을 생성하는 함수
 	    function createPagination(totalCount, currentPage, size) {
-	    	console.log("Creating pagination with totalCount:", totalCount);
 	        const paginationDiv = document.getElementById("pagination");
 	        paginationDiv.innerHTML = '';
 	        const totalPages = Math.ceil(totalCount / size);
-	        console.log("Total pages:", totalPages);
 
 	        for (let i = 0; i < totalPages; i++) {
 	            const pageButton = document.createElement('button');
 	            pageButton.textContent = i + 1;
-	            pageButton.onclick = () => fetchCompanies(i, size);
+	            pageButton.onclick = () => fetchCompanies(document.getElementById("locNickDropdown").value, i, size);
 	            if (i === currentPage) {
 	                pageButton.style.fontWeight = 'bold';
 	            }
@@ -224,47 +231,26 @@
 	        }
 	    }
 	    
+	 	// 페이지네이션 로딩 함수
 	    function loadPagination(totalPages, currentPage) {
 	        const paginationContainer = document.getElementById('pagination');
-	        paginationContainer.innerHTML = ''; // Clear existing buttons
+	        paginationContainer.innerHTML = ''; // 기존 버튼 초기화
 
 	        for (let i = 0; i < totalPages; i++) {
 	            const button = document.createElement('button');
 	            button.textContent = i + 1;
 	            button.classList.add('page-button');
 	            button.onclick = () => {
-	                loadCompanies(i); // Function to load company data for the specific page
+	                loadCompanies(i); // 특정 페이지의 회사 데이터 로드
 	            };
 	            if (i === currentPage) {
-	                button.classList.add('active'); // Highlight the current page
+	                button.classList.add('active'); // 현재 페이지 강조
 	            }
 	            paginationContainer.appendChild(button);
 	        }
 	    }
 
-	    // Example call to the pagination function with dummy values
-	    document.addEventListener('DOMContentLoaded', function () {
-	        fetch('/getCompanyCount?locNick=yourLocNick') // Replace with the actual locNick value or variable
-	            .then(response => response.json())
-	            .then(totalCount => {
-	                const size = 10; // Same size as in your controller
-	                const totalPages = Math.ceil(totalCount / size);
-	                loadPagination(totalPages, 0);
-	            });
-	    });
-
-	    function loadCompanies(page) {
-	        const locNick = 'yourLocNick'; // Replace with a dynamic value if needed
-	        const size = 10; // Same size as in your controller
-
-	        fetch(`/getCompanies?locNick=${locNick}&page=${page}&size=${size}`)
-	            .then(response => response.json())
-	            .then(data => {
-	                // Populate company data in your desired table or list
-	                console.log(data); // Replace with logic to display data in the HTML
-	            });
-	    }
-
+	  
 	    window.onload = function() {
 	        fetchPestData();
 	        fetchCompanies(); // 이 함수가 페이지 로드 시 호출되고 있는지 확인합니다.
