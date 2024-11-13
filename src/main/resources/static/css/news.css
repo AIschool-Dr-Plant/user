@@ -1,8 +1,10 @@
-body, html {
-     margin: 0;
-     padding: 0;
-     height: 100%;
+
+main{
+	display : table;
+	margin-left : auto;
+	margin-right : auto;
 }
+
 h3 {
    	color: #19CE60;
 }
@@ -13,7 +15,6 @@ a {
 }
 
 article {
-	height: 100%;
     margin: 0;
     justify-content: center;
     align-items: center;
@@ -22,13 +23,11 @@ article {
 
 table{
 	border-color:#ffffff;
-	width: 80%;
+	width: 50%;
 	table-layout: fixed;
-	margin-left:200px;
-	margin-right:50px;
+	margin: auto; text-align: center;
     border-collapse: collapse;
-    border-top:2px solid #19CE60;
-	
+    border-top:2px solid #19CE60;	
 }
 
 td, th {
@@ -43,17 +42,19 @@ td, th {
 }
 
 .newstitle{
-	width: 250px;
+	width: 450px;
+	font-weight : bold;
 }
 
 .newspub{
-	width: 50px;
+	width: 100px;
 }
 .newsreporter{
-	width: 50px;
+	width: 120px;
 }
 .newspub_dt{
-	width: 50px;
+	width: 120px;
+	color: gray;
 }
 
 

@@ -317,8 +317,12 @@
         <section style="float:left;">
 	        <!-- 농업 뉴스 섹션 -->
 	        <article>
-	            <h3>농업뉴스</h3>
-	            <a th:href="@{/news(cusId=${cusId})}">더보기</a> <!-- 뉴스 더보기 링크 -->
+	        	<div>
+	            	<h3>농업뉴스</h3>
+	            
+	            	<a th:href="@{/news(cusId=${cusId})}" style="float: right;">더보기</a> <!-- 뉴스 더보기 링크 -->
+	            </div>
+	            <br>
 	            <table border="1">
 	                <tr th:each="news : ${latestNews}">
 	                    <td>

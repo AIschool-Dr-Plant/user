@@ -1,8 +1,11 @@
+
 main{
-display : table;
-margin-left : auto;
-margin-right : auto;
+	display : table;
+	margin-left : auto;
+	margin-right : auto;
+	
 }
+
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -47,14 +50,42 @@ input:checked + .slider:before {
 }
 
 table{
-	font-size: 20px;
+	border-color:#ddd;
+	width: 50%;
+	table-layout: fixed;
+	margin-left:400px;
+    border-collapse: collapse;
+    border-top:2px solid #19CE60;
+    
 }
 
+.center_tb{
+	text-align:center;
+}
+
+
 h3 {
-	color: #19CE60;
+	margin-left:450px;
 }
 
 a {
 	text-decoration-line: none; 
 	color:#000000;
+}
+
+.ts{
+	width: 50px;
+	font-weight : bold;
+}
+
+.delete_bt{
+	width:50px;
+	text-align: center;
+}
+.rg_bt{
+	text-align:center;
+}
+
+td{
+	font-size: 15px;
 }

@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
-	
+	<main>
     <article>
 	    <h3>농업뉴스</h3>
 	    <table border="1">
@@ -33,5 +33,6 @@
 		     <a th:href="@{/news(page=${currentPage + 1})}" th:if="${currentPage < totalPages}">다음</a>
 		</div>
 	</article>
+	</main>
 </body>
 </html>
