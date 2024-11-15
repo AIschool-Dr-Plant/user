@@ -107,7 +107,7 @@
 		<table border="1">
 			<tr>
 				<td>카카오 알림서비스 사용여부</td>
-				<td>
+				<td class="ts">
 					<label class="toggle-switch" th:attr="data-cusid=${cusId}">
 					    <input type="checkbox" th:checked="${alarmAgree == 1}">
 					    <span class="slider"></span>
@@ -125,9 +125,10 @@
 			</tr>
 		</table>
 	</article>
+	<br>
 	<article>
 		<h3>관심위치리스트</h3>
-		<table border="1">
+		<table border="1" class="center_tb">
              <tr>
                  <th>위치별명</th>
                  <th>장치ID</th>
@@ -140,17 +141,18 @@
                  <td th:text="${location.DEV_ID}"></td>
                  <td th:text="${#strings.substring(location.REG_DT, 0, 10)}"></td>
                  <td th:text="${location.RGN_NM}"></td>
-                 <td>
+                 <td class="delete_bt">
                  	<button type="button" th:attr="data-locid=${location.LOC_ID}" class="delete-button">삭제하기</button>
                  </td>
              </tr>
          </table>
 	</article>
+	<br>
 	<article>
 	    <h3>관심위치 등록하기</h3>
 	    <form id="addLocationForm">
 	        <input type="hidden" name="cusId" th:value="${cusId}"> <!-- cusId를 숨김 필드로 추가 -->
-	        <table border="1">
+	        <table border="1" class="center_tb">
 	            <tr>
 	                <td>위치별명</td>
 	                <td><input type="text" name="locNick" required></td>
@@ -164,7 +166,11 @@
 	                <td><input type="text" name="rgnId" required></td>
 	            </tr>
 	        </table>
-	        <button type="button" id="registerLocationButton">등록하기</button>
+	        <br>
+	        <div class="rg_bt">
+	        	<button type="button" id="registerLocationButton">등록하기</button>
+			</div>
+	        
 	    </form>
 	</article>
 	</main>

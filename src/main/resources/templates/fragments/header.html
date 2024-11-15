@@ -4,7 +4,7 @@
 </head>
 <body>
     <!-- 사이트의 헤더 영역 -->
-    <header th:fragment="siteHeader">
+    <header th:fragment="siteHeader" style="padding:25px;">
         <div>
             <div>
                 <!-- 로고 왼쪽 정렬 -->
@@ -12,7 +12,7 @@
                     style="width: 80px; height: 80px; float: left;">
                 
                 <!-- 사용자 ID 및 마이페이지 링크 오른쪽 정렬 -->
-                <div style="float: right; padding-top:25px;">
+                <div style="float: right; padding-top:30px;">
                     <!-- 사용자 ID 표시 -->
                     <span th:text="${cusId + '님'}"></span>
                     
@@ -29,12 +29,12 @@
          </div>
       	<!-- 내비게이션 메뉴 -->
 		<div style="clear:both;">
-   			<nav style="padding:5px; background-color: #19CE60;  color: #F5F5F5;">
-	    		<div style="padding-left: 10px;">
+   			<nav style="padding:15px; background-color: #19CE60;  color: #F5F5F5;">
+	    		<div style="padding-left: 20px;">
 	    		<a th:href="@{/extrmncmp(cusId=${cusId})}" 
-	    		style="text-decoration-line: none; color:#F5F5F5;">방제업체</a> |
+	    		style="text-decoration-line: none; color:#F5F5F5;">방제업체</a> 
 	    		<a th:href="@{/news(cusId=${cusId})}"
-	        	style="text-decoration-line: none; color:#F5F5F5;">농업뉴스</a> |
+	        	style="text-decoration-line: none; color:#F5F5F5;">농업뉴스</a> 
 	        	<a th:href="@{/pestguide(cusId=${cusId})}"
 	        	style="text-decoration-line: none; color:#F5F5F5;">병해충도감</a>
 	    		</div>
