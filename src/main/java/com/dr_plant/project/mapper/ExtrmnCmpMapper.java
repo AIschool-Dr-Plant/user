@@ -10,12 +10,9 @@ import com.dr_plant.project.entity.ExtrmnCmpTb;
 
 @Mapper
 public interface ExtrmnCmpMapper {
-    @Select("SELECT * FROM EXTRMN_CMP_TB WHERE RGN_ID=#{rgnId}")
-    List<ExtrmnCmpTb> findByrgnId(String rgnId);
-    
-    @Select("SELECT * FROM EXTRMN_CMP_TB WHERE RGN_ID=#{rgnId} LIMIT #{limit} OFFSET #{offset}")
-    List<ExtrmnCmpTb> findByrgnIdWithPagination(@Param("rgnId") String rgnId, @Param("limit") int limit, @Param("offset") int offset);
+	@Select("SELECT COUNT(*) FROM EXTRMN_CMP_TB")
+	int getTotalCompanyCount();
 
-    @Select("SELECT COUNT(*) FROM EXTRMN_CMP_TB WHERE RGN_ID=#{rgnId}")
-    int countByrgnId(@Param("rgnId") String rgnId);
+	@Select("SELECT * FROM EXTRMN_CMP_TB LIMIT #{offset}, #{limit}")
+	List<ExtrmnCmpTb> getPaginatedData(@Param("offset") int offset, @Param("limit") int limit);
 }

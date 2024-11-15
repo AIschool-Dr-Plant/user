@@ -2,13 +2,337 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Main</title>
+	<style>
+	    .current {
+	        font-weight: bold;
+	        pointer-events: none; /* 클릭 비활성화 */
+	        color: #000; /* 텍스트 색상 */
+	    }
+	</style>
 </head>
 <body>
     <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
     <div th:replace="fragments/header :: siteHeader"></div>
     
-    <main style="display: center;">
-
+	<main>
+		<article>
+			<h1>NCPMS 병해충 발생정보</h1>
+			<p>제14호(2024.11.1.~2024.11.30.)</p>
+			<img alt="상태값정보" src="./assets/img/label.PNG">
+			<table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[0].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[0].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[0].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[0].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[0].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[0].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[0].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+			            <span th:text="${data[0].STATE_NM}"></span>
+		            </td>            
+		        </tr>
+	        </table>
+			<table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[1].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[1].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[1].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[1].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[1].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[1].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[1].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+		            	<span th:text="${data[1].STATE_NM}"></span>
+		            </td>  
+		        </tr>
+	        </table>
+	        <table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[2].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[2].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[2].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[2].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[2].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[2].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[2].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+		            	<span th:text="${data[2].STATE_NM}"></span>
+		            </td>  
+		        </tr>
+	        </table>
+	        <table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[3].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[3].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[3].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[3].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[3].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[3].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[3].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+		            	<span th:text="${data[3].STATE_NM}"></span>
+		            </td>  
+		        </tr>
+	        </table>
+	        <table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[4].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[4].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[4].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[4].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[4].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[4].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[4].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+		            	<span th:text="${data[4].STATE_NM}"></span>
+		            </td>  
+		        </tr>
+	        </table>
+	        <table border="1">
+		        <tr>
+		            <td>작물명</td>
+		            <td th:text="${data[5].PEST_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>병명</td>
+		            <td th:text="${data[5].CRP_NM}"></td>
+		        </tr>
+		       	<tr>
+		            <td>작물분류정보</td>
+		            <td th:text="${data[5].CRP_CLF_NM}"></td>
+		        </tr>
+		        <tr>
+		            <td>상태값</td>
+		            <td>
+				        <span th:if="${data[5].STATE_ID == 1}" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></span>
+			            <span th:if="${data[5].STATE_ID == 2}" style="display: inline-block; width: 20px; height: 20px; background-color: #ff6200; border-radius: 50%;"></span>
+			            <span th:if="${data[5].STATE_ID == 3}" style="display: inline-block; width: 20px; height: 20px; background-color: #ffd000; border-radius: 50%;"></span>
+			            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 20px; height: 20px; background-color: grey; border-radius: 50%;"></span>
+		            	<span th:text="${data[5].STATE_NM}"></span>
+		            </td>  
+		        </tr>
+	        </table>
+	        <div>
+	            <a th:if="${currentPage > 1}" th:href="@{/main(page=1)}">맨앞</a>
+	            <a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1})}">이전</a>
+	            
+	            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+	                <a th:href="@{/main(page=${i})}" th:text="${i}" th:classappend="${i == currentPage ? 'current' : ''}"></a>
+	            </span>
+	            
+	            <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${currentPage + 1})}">다음</a>
+	            <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${totalPages})}">맨뒤</a>
+	        </div>
+		</article>
+		<article>
+			<h1>NCPMS 병해충 발생정보</h1>
+			<label for="dropdown">관심위치</label>
+			<select id="dropdown" name="options">
+		        <option value="나주배밭1">나주배밭1</option>
+		        <option value="나주배밭2">나주배밭2</option>
+		        <option value="나주배밭3">나주배밭3</option>
+		    </select>
+		    <a href="./mypage">+관심위치</a>
+			<table border="1">
+			    <thead>
+			        <tr>
+			            <th>업체명</th>
+			            <th>내용</th>
+			            <th>사업 구분</th>
+			            <th>주소</th>
+			        </tr>
+			    </thead>
+			    <tbody th:each="cmp : ${companyData}">
+			        <tr>
+			            <td th:text="${cmp.CMP_NM}"></td>
+			            <td th:text="${cmp.CONT}"></td>
+			            <td th:text="${cmp.BIZ_DIV}"></td>
+			            <td><a th:href="'https://map.kakao.com//link/search/' + ${cmp.FULL_ADDR}" th:text="'상세주소'" target="_blank"></a></td>
+			        </tr>
+			    </tbody>
+			</table>
+			<div>
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=1)}">맨앞</a>
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=${companyCurrentPage - 1})}">이전</a>
+			
+			    <span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
+			        <a th:href="@{/main(companyPage=${i})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
+			    </span>
+			
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyCurrentPage + 1})}">다음</a>
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyTotalPages})}">맨끝</a>
+			</div>
+		</article>
+		<article>
+			<h1>농업뉴스</h1>
+			<table border="1">
+	            <tr th:each="news : ${latestNews}">
+					<td>
+						<a th:href="${news.URL}" th:text="${news.TITLE}"></a>
+						<br>
+						<span th:text="${news.PUB}"></span>
+						<span th:text="${news.REPORTER}"></span>
+						<span th:text="${news.PUB_DT}"></span>
+					</td>
+	            </tr>
+		    </table>
+		</article>
+		<article>
+			<h1>배 발병 예측</h1>
+			<table border="1">
+	            <tr>
+					<td>병명</td>
+	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">붉은별무늬병</a></td>
+	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은별무늬병</a></td>
+	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은무늬병</a></td>
+	            </tr>
+	            <tr>
+					<td>발병사진</td>
+	                <td><img alt="상태값정보" src="./assets/img/CedarAppleRust.jfif" width="100" height="80"></td>
+	                <td><img alt="상태값정보" src="./assets/img/Scab.png" width="100" height="80"></td>
+	                <td><img alt="상태값정보" src="./assets/img/LeafSpot.jfif" width="100" height="80"></td>
+	            </tr>
+	            <tr>
+					<td>발병확률</td>
+	                <td>1.2%</td>
+	                <td>3.0%</td>
+	                <td>2.6%</td>
+	            </tr>
+	            <tr>
+					<td>추천약제</td>
+	                <td><button type="button" id="redStar" name="sAgApplcDbyhsNm1" value="붉은별무늬병">붉은별무늬병</button></td>
+	                <td><button type="button" id="blackStar" name="sAgApplcDbyhsNm1" value="검은별무늬병">검은별무늬병</button></td>
+	                <td><button type="button" id="black" name="sAgApplcDbyhsNm1" value="검은무늬병">검은무늬병</button></td>
+	            </tr>
+		    </table>
+			<form action="https://psis.rda.go.kr/psis/agc/res/agchmRegistStusLst.ps" method="post" target="_blank">
+				<input type="hidden" name="pageIndex" value="1">
+				<input type="hidden" name="sortOrder" value="">
+				<input type="hidden" name="showSortField" value="">
+				<input type="hidden" name="pestiCode" value="">
+				<input type="hidden" name="diseaseUseSeq" value="">
+				<input type="hidden" name="agchmPrdlstNo" value="">
+				<input type="hidden" name="reSrchFlag" value="Y">
+				<input type="hidden" name="sSigIngYn" value="Y">
+				<input type="hidden" name="sMultiIngYn" value="Y">
+				<input type="hidden" name="sAgPrpos" value="">
+				<input type="hidden" name="sAgPrdlstNm" value="">
+				<input type="hidden" name="sAgBrandNm" value="">
+				<input type="hidden" name="sAgCropsYn1" value="Y">
+				<input type="hidden" name="sAgCropsNm1" value="배">
+				<input type="hidden" name="sAgCropsNm2" value="">
+				<input type="hidden" name="sAgCropsNm3" value="">
+				<input type="hidden" name="sAgCropsNm4" value="">
+				<input type="hidden" name="sAgDbyhsYn1" value="Y">
+				<input type="hidden" name="sAgApplcDbyhsNm1" value="붉은별무늬병">
+				<input type="hidden" name="sAgApplcDbyhsNm2" value="">
+				<input type="hidden" name="sAgApplcDbyhsNm3" value="">
+				<input type="hidden" name="sAgApplcDbyhsNm4" value="">
+				<input type="hidden" name="sFormulation" value="">
+				<input type="hidden" name="sUseeMth" value="">
+				<input type="hidden" name="sIndictSymbl" value="">
+				<input type="hidden" name="sCmpnyNm" value="">
+				<input type="hidden" name="pageUnit" value="100">
+				<input type="hidden" name="menuId" value="PS00263">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+				<input type="hidden" name="sAgCropsYn2" value="N">
+				<input type="hidden" name="sAgCropsYn3" value="N">
+				<input type="hidden" name="sAgCropsYn4" value="N">
+				<input type="hidden" name="sAgDbyhsYn2" value="N">
+				<input type="hidden" name="sAgDbyhsYn3" value="N">
+				<input type="hidden" name="sAgDbyhsYn4" value="N">
+			</form>
+			
+			<script type="text/javascript">
+				document.querySelectorAll("button").forEach(function(item){
+					console.log(item)
+					item.addEventListener("click",function(){
+						document.querySelector("form > input[name='sAgApplcDbyhsNm1']").value = item.value;
+						document.querySelector("form").submit();
+					});
+				});
+			</script>
+		</article>
     </main>
 </body>
 </html>
