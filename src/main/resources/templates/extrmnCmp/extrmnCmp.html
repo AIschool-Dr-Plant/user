@@ -2,70 +2,77 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>extrmnCmp</title>
+    <link rel="stylesheet" href="./css/extrmnCmp.css"> 
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
-    <h2>방제업체</h2>
-    <h1>지역 버튼 목록</h1>
-    <div>
-        <button>전라남도</button>
-        <button>전북특별자치도</button>
-        <button>경상남도</button>
-        <button>경상북도</button>
-        <button>강원특별자치도</button>
-        <button>경기도</button>
-        <button>충청남도</button>
-        <button>충청북도</button>
-        <button>제주특별자치도</button>
-        <button>서울특별시</button>
-        <button>부산광역시</button>
-        <button>대구광역시</button>
-        <button>인천광역시</button>
-        <button>광주광역시</button>
-        <button>대전광역시</button>
-        <button>울산광역시</button>
-        <button>세종특별자치시</button>
-    </div>
-    <div>
-   		<label for="dropdown">시군구</label>
-		<select id="dropdown" name="options">
-	        <option value="나주시">나주시</option>
-	    </select>
-	    <label for="dropdown">읍면</label>
-		<select id="dropdown" name="options">
-	        <option value="나주시">옥당리</option>
-	    </select>
-    </div>
-    <div>
-    	<table border="1">
-		    <thead>
-		        <tr>
-		            <th>업체명</th>
-		            <th>내용</th>
-		            <th>사업 구분</th>
-		            <th>주소</th>
-		        </tr>
-		    </thead>
-		    <tbody th:each="cmp : ${companyData}">
-		        <tr>
-		            <td th:text="${cmp.CMP_NM}"></td>
-		            <td th:text="${cmp.CONT}"></td>
-		            <td th:text="${cmp.BIZ_DIV}"></td>
-		            <td><a th:href="'https://map.kakao.com//link/search/' + ${cmp.FULL_ADDR}" th:text="'상세주소'" target="_blank"></a></td>
-		        </tr>
-		    </tbody>
-		</table>
-		<div>
-		    <a th:if="${companyCurrentPage > 1}" th:href="@{/extrmnCmp(companyPage=1)}">맨앞</a>
-		    <a th:if="${companyCurrentPage > 1}" th:href="@{/extrmnCmp(companyPage=${companyCurrentPage - 1})}">이전</a>
-		
-		    <span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
-		        <a th:href="@{/extrmnCmp(companyPage=${i})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
-		    </span>
-		
-		    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/extrmnCmp(companyPage=${companyCurrentPage + 1})}">다음</a>
-		    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/extrmnCmp(companyPage=${companyTotalPages})}">맨끝</a>
-		</div>
-    </div>
+    <main>
+	    <h3>방제업체</h3>
+	    <br>
+	    <div class="btn">
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">전라남도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">전북특별자치도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">경상남도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">경상북도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">강원특별자치도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">경기도</button>
+	        <br>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">충청남도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">충청북도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">제주특별자치도</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">서울특별시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">부산광역시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">대구광역시</button>
+	        <br>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">인천광역시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">광주광역시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">대전광역시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">울산광역시</button>
+	        <button class="w-btn-outline w-btn-gray-outline" type="button">세종특별자치시</button>
+	    </div>
+	    <br>
+	    <div>
+	   		<label for="dropdown">시군구</label>
+			<select id="dropdown" name="options">
+		        <option value="나주시">나주시</option>
+		    </select>
+		    <label for="dropdown">읍면</label>
+			<select id="dropdown" name="options">
+		        <option value="나주시">옥당리</option>
+		    </select>
+	    </div>
+	    <br>
+	    <div>
+	    	<table border="1">
+			    <thead>
+			        <tr>
+			            <th>업체명</th>
+			            <th style="width:150px;">내용</th>
+			            <th style="width:350px;">사업 구분</th>
+			            <th style="width:90px;">주소</th>
+			        </tr>
+			    </thead>
+			    <tbody th:each="cmp : ${companyData}">
+			        <tr>
+			            <td th:text="${cmp.CMP_NM}"></td>
+			            <td th:text="${cmp.CONT}"></td>
+			            <td th:text="${cmp.BIZ_DIV}"></td>
+			            <td><a th:href="'https://map.kakao.com//link/search/' + ${cmp.FULL_ADDR}" th:text="'상세주소'" target="_blank"></a></td>
+			        </tr>
+			    </tbody>
+			</table>
+			<div>
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/extrmnCmp(companyPage=1)}">맨앞</a>
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/extrmnCmp(companyPage=${companyCurrentPage - 1})}">이전</a>
+			
+			    <span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
+			        <a th:href="@{/extrmnCmp(companyPage=${i})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
+			    </span>
+			
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/extrmnCmp(companyPage=${companyCurrentPage + 1})}">다음</a>
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/extrmnCmp(companyPage=${companyTotalPages})}">맨끝</a>
+			</div>
+	    </div>
+    </main>
 </body>
 </html>
