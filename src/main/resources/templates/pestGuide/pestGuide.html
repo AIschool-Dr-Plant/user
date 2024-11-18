@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>extrmnCmp</title>
+    <title>pestGuide</title>
     <link rel="stylesheet" href="./css/pestguide.css"> 
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
-	<main>
+    <main>
 	    <h3>배 병해충도감</h3>
-	    <br>
-	    <div class="btn">
+	    <div>
 		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table1')">병 피해</button>
 		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table2')">해충피해</button>
 		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table3')">천적곤충</button>
 		</div>
-		<br>
 	    <div id="table1" class="table-container" style="display: block;">
 	        <table border="1">
 	        	<tr>
