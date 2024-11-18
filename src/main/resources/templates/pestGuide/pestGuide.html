@@ -3,6 +3,15 @@
 <head>
     <title>pestGuide</title>
     <link rel="stylesheet" href="./css/pestguide.css"> 
+   	<script>
+        function showTable(tableId) {
+            document.getElementById('table1').style.display = 'none';
+            document.getElementById('table2').style.display = 'none';
+            document.getElementById('table3').style.display = 'none';
+            
+            document.getElementById(tableId).style.display = 'block';
+        }
+    </script>
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
@@ -478,20 +487,11 @@
 	            </tr>
 	        </table>
 	    </div>
-		<div id="table1" class="table-container" style="display: block;">
+		<div id="table3" class="table-container" style="display: block;">
 			<table border="1">
 			
 			</table>
 		</div>
-	    <script>
-	        function showTable(tableId) {
-	            document.getElementById('table1').style.display = 'none';
-	            document.getElementById('table2').style.display = 'none';
-	            document.getElementById('table3').style.display = 'none';
-	            
-	            document.getElementById(tableId).style.display = 'block';
-	        }
-	    </script>
     </main>
 </body>
 </html>
