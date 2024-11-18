@@ -25,11 +25,7 @@ main{
 	margin-right : auto;
 }
 
-body, html {
-     margin: 0;
-     padding: 0;
-     height: 100%;
-}
+
 
 .page-button {
     margin: 0 5px;
@@ -68,7 +64,6 @@ table{
 
 .card table{
   border: 2px solid #ccc;
-  border-radius: 15px;
   padding: 15px;
   width: 200px;
   height: 150px;
@@ -79,12 +74,11 @@ table{
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  
+  border-radius: 5px;
 }
 
 .card3 table{
   border: 2px solid #ccc;
-  border-radius: 15px;
   padding: 15px;
   width: 200px;
   height: 150px;
@@ -95,8 +89,31 @@ table{
   margin-right:15px;
   margin-left: 10px;
   margin-top: 10px;
-  font-size: 15px;
+  border-radius: 5px;
 }
+
+
+.card3 table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #333;
+  border-style: hidden;    
+}
+.card3 td {
+  padding: 5px
+}
+
+.card table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #333;
+  border-style: hidden;    
+}
+.card td {
+  padding: 5px
+}
+
+
 
 .pests{
 	width: 120px;
@@ -105,3 +122,5 @@ table{
 .ncpmsoc th{
 	width: 155px;
 }
+
+
