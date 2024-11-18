@@ -5,5 +5,18 @@
 </head>
 <body>
     <h2>아이디 찾기</h2>
+    <form action="/submitForm" method="post">
+        <div>
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+        </div>
+        <div>
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+        </div>
+        <div>
+            <button type="submit">아이디 찾기</button>
+        </div>
+    </form>
 </body>
 </html>

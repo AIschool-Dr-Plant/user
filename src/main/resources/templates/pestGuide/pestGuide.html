@@ -5,6 +5,489 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
-    <h2>병해충도감</h2>
+    <h2>배 병해충도감</h2>
+    <button onclick="showTable('table1')">병 피해</button>
+    <button onclick="showTable('table2')">해충피해</button>
+    <button onclick="showTable('table3')">천적곤충</button>
+
+    <div id="table1" class="table-container" style="display: block;">
+        <table border="1">
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000662&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/LeafSpot.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Scab.png" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000663&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Black rot.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000678&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Fire blight.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004178&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Sooty blotch.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000662&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		검은무늬병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		검은별무늬병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000663&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		겹무늬병
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000678&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		과수화상병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004178&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		그을음병
+                	</a>
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000677&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Crown gall.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000672&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Powdery mildew.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004066&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear rot.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000684&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Coral spot.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/CedarAppleRust.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000677&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		근두암종병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000672&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		뒷면흰가루병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004066&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배갈색썩음병
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000684&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		붉은가지마름병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		붉은별무늬병
+                	</a>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000676&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Black necrotic leaf spot.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000680&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/	Gray mold.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000671&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Die-back.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000664&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Anthracnose.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000669&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Blue mold.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000676&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		잎검은점병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000680&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		잿빛곰팡이병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000671&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		줄기마름병
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000664&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		탄저병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000669&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		푸른곰팡이병
+                	</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004182&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/white Powdery mildew.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000685&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/White root rot.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000670&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Leaf spot.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00004182&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		흰가루병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000685&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		흰날개무늬병
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000670&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		흰별무늬병
+                	</a>		
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="table2" class="table-container" style="display: none;">
+        <table border="1">
+           	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000146&moveKey=ZM1CL0021&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/mulberry mealybug.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000649&moveKey=ZM1CV0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Ricania.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000065&moveKey=ZM1CM0030&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pyricola.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000152&moveKey=ZR1DE0012&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Oriental moth.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000154&moveKey=ZR1DS0363&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Tobacco cutworm.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000146&moveKey=ZM1CL0021&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		가루깍지벌레
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000649&moveKey=ZM1CV0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		갈색날개매미충
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000065&moveKey=ZM1CM0030&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		꼬마배나무이
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000152&moveKey=ZR1DE0012&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		노랑쐐기나방
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000154&moveKey=ZR1DS0363&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		담배거세미나방
+                	</a>
+                </td>
+            </tr>
+           	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000143&moveKey=ZM1AS0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Korean blackish cicada.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000537&moveKey=ZW2AA0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/despecta.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000145&moveKey=ZM1AJ0158&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/cotton aphid.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000612&moveKey=ZM1BH9999&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pruinosa.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000389&moveKey=ZR1CO0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/swift moth.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000143&moveKey=ZM1AS0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		말매미
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000537&moveKey=ZW2AA0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		명주달팽이
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000145&moveKey=ZM1AJ0158&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		목화진딧물
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000612&moveKey=ZM1BH9999&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		미국선녀벌레
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000389&moveKey=ZR1CO0001&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		박쥐나방
+                	</a>
+                </td>
+            </tr>
+           	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000096&moveKey=ZR1CK0037&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear barkminer.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000051&moveKey=ZM1AJ0115&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/piri.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000059&moveKey=ZM1CF0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/kuwana pear aphid.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000047&moveKey=ZL1CS0019&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear lace-bug.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000132&moveKey=ZT1AP0003&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear stem sawfly.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000096&moveKey=ZR1CK0037&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무굴나방
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000051&moveKey=ZM1AJ0115&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무동글밑진딧물
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000059&moveKey=ZM1CF0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무면충
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000047&moveKey=ZL1CS0019&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무방패벌레
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000132&moveKey=ZT1AP0003&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무벌
+                	</a>
+                </td>
+            </tr>
+           	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000066&moveKey=ZM1CM0031&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Larger pear sucker.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000117&moveKey=ZR1EL0254&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Pear fruit moth.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000615&moveKey=ZT1AY0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear bee.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000085&moveKey=ZR1AY0002&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/peach fruit moth.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000131&moveKey=ZR1FL0012&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear leaf worm.jfif" width=150px, height=150px/>
+                	</a>	
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000066&moveKey=ZM1CM0031&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배나무이
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000117&moveKey=ZR1EL0254&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배명나방
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000615&moveKey=ZT1AY0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		배혹벌
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000085&moveKey=ZR1AY0002&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		복숭아심식나방
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000131&moveKey=ZR1FL0012&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		사과알락나방
+                	</a>
+                </td>
+            </tr>
+           	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000066&moveKey=ZM1CM0031&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Larger pear sucker.jfif" width=150px, height=150px/>
+                	</a>
+               	</td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000117&moveKey=ZR1EL0254&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/Pear fruit moth.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000615&moveKey=ZT1AY0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/pear bee.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000085&moveKey=ZR1AY0002&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		<img src="./assets/img/peach fruit moth.jfif" width=150px, height=150px/>
+                	</a>
+                </td>
+            </tr>
+        	<tr>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000066&moveKey=ZM1CM0031&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		애모무늬잎말이나방
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000117&moveKey=ZR1EL0254&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		조팝나무진딧물
+                	</a>
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000615&moveKey=ZT1AY0008&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		차응애
+                	</a>		
+                </td>
+                <td>
+                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=H00000085&moveKey=ZR1AY0002&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+                		콩가루벌레
+                	</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+	<div id="table1" class="table-container" style="display: block;">
+		<table border="1">
+		
+		</table>
+	</div>
+    <script>
+        function showTable(tableId) {
+            document.getElementById('table1').style.display = 'none';
+            document.getElementById('table2').style.display = 'none';
+            document.getElementById('table3').style.display = 'none';
+            
+            document.getElementById(tableId).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
