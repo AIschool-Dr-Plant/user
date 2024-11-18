@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Device Detail</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    let chartInstance = null; // Chart 인스턴스를 저장할 전역 변수
+    
+    window.onload = function() {
+        const locNick = document.getElementById('locNickSelect').value;
+        fetchDeviceData(locNick, 1); // 페이지 로드 시 온습도 그래프를 불러옴
+    };
+
+    function fetchDeviceData(locNick, buttonType) {
+    	fetch(`/getDeviceData?locNick=${locNick}`)
+            .then(response => response.json())
+            .then(data => {
+                drawGraph(data, buttonType);
+            });
+    }
+
+    function drawGraph(data, buttonType) {
+        const labels = data.map(item => item.meas_dt);
+        let yValues = [];
+
+        switch (buttonType) {
+            case 1:
+                yValues = [
+                    { label: 'HUM', data: data.map(item => item.hum) },
+                    { label: 'TEMP', data: data.map(item => item.temp) }
+                ];
+                break;
+            case 2:
+                yValues = [{ label: 'AP', data: data.map(item => item.ap) }];
+                break;
+            case 3:
+                yValues = [{ label: 'WS', data: data.map(item => item.ws) }];
+                break;
+            case 4:
+                yValues = [{ label: 'RF', data: data.map(item => item.rf) }];
+                break;
+        }
+
+        const ctx = document.getElementById('chart').getContext('2d');
+
+        // 기존 차트가 있다면 삭제
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        // 새로운 차트를 생성하여 인스턴스를 저장
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: yValues.map(yVal => ({
+                    label: yVal.label,
+                    data: yVal.data,
+                    borderWidth: 2,
+                    fill: false,
+                    borderColor: getRandomColor(), // 그래프의 색상을 랜덤으로 설정
+                }))
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Measurement Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Values'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 랜덤 색상을 반환하는 함수
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+</head>
+<body>
+    <div>
+        <select id="locNickSelect" name="locNick" onchange="fetchDeviceData(this.value, 1)">
+            <th:block th:each="locNick : ${locNickList}">
+                <option th:value="${locNick}" th:text="${locNick}"></option>
+            </th:block>
+        </select>
+
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 1)">온습도 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 2)">풍속 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 3)">기압 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 4)">강수량 그래프</button>
+
+        <canvas id="chart" style="width: 200px; height: 100px;"></canvas>
+    </div>
+</body>
+</html>

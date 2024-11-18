@@ -13,11 +13,11 @@ import com.dr_plant.project.entity.IntLocTb;
 
 @Mapper
 public interface IntLocMapper {
-	@Select("SELECT * FROM INT_LOC_TB WHERE CUS_ID=#{cusId}")
-	List<IntLocTb> findBycusId(String cusId);
+    @Select("SELECT LOC_NICK FROM INT_LOC_TB WHERE CUS_ID = #{cusId}")
+    List<String> findLocNickByCusId(String cusId);
 	
-	@Select("SELECT * FROM INT_LOC_TB WHERE LOC_NICK=#{locNick} LIMIT 1")
-    Optional<IntLocTb> findByLocNick(String locNick);
+    @Select("SELECT DEV_ID FROM INT_LOC_TB WHERE LOC_NICK = #{locNick}")
+    String findDevIdByLocNick(String locNick);
 	
 	@Select("SELECT i.*, v.RGN_NM " +
 	        "FROM INT_LOC_TB i " +

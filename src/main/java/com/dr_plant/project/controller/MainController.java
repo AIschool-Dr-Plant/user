@@ -33,7 +33,8 @@ public class MainController {
     public String main(
     		Model model, 
     		@RequestParam(defaultValue = "1") int page,
-    		@RequestParam(defaultValue = "1") int companyPage) {
+    		@RequestParam(defaultValue = "1") int companyPage,
+    		@RequestParam(defaultValue = "KDH") String cusId) {
     	// Existing pest forecast logic
         int pageSize = 6;
         int offset = (page - 1) * pageSize;
@@ -59,6 +60,8 @@ public class MainController {
         //latest 10 news
         List<NewsTb> latestNews = newsMapper.findLatestNews();
         model.addAttribute("latestNews", latestNews);
+        
+        model.addAttribute("cusId", cusId);
         
         return "main/main";
     }  

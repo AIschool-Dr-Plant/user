@@ -173,18 +173,17 @@
 			            </td>  
 			        </tr>
 		        </table>
-	        </div>
-	        <div style="clear:both; text-align: center;">
-	            <a th:if="${currentPage > 1}" th:href="@{/main(page=1)}">맨앞</a>
-	            <a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1})}">이전</a>
-	            
-	            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-	                <a th:href="@{/main(page=${i})}" th:text="${i}" th:classappend="${i == currentPage ? 'current' : ''}"></a>
-	            </span>
-	            
-	            <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${currentPage + 1})}">다음</a>
-	            <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${totalPages})}">맨뒤</a>
-	        </div>
+				<div style="clear:both; text-align: center;">
+				    <a th:if="${currentPage > 1}" th:href="@{/main(page=1, cusId=${cusId})}">맨앞</a>
+				    <a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1}, cusId=${cusId})}">이전</a>
+				    
+				    <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+				        <a th:href="@{/main(page=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == currentPage ? 'current' : ''}"></a>
+				    </span>
+				    
+				    <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${currentPage + 1}, cusId=${cusId})}">다음</a>
+				    <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${totalPages}, cusId=${cusId})}">맨뒤</a>
+				</div>
 	        
 	        <!--NCPMS 병해충 발생정보-->
 			<h1>NCPMS 병해충 발생정보</h1>
@@ -194,9 +193,9 @@
 		        <option value="나주배밭2">나주배밭2</option>
 		        <option value="나주배밭3">나주배밭3</option>
 		    </select>
-		    <a href="./mypage" style="float: right;">+관심위치</a>
+		    <a th:href="@{/mypage(cusId=${cusId})}" style="float: right;">+관심위치</a>
+		    <a th:href="@{/devicedetail(cusId=${cusId})}" style="float: right;">환경정보수집장치 상세보기>></a>
 		    <br>
-		    
 			<table border="1" class="ncpmsoc">
 			    <thead>
 			        <tr>
@@ -216,18 +215,16 @@
 			    </tbody>
 			</table>
 			<div style="clear:both; text-align: center;">
-			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=1)}">맨앞</a>
-			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=${companyCurrentPage - 1})}">이전</a>
-			
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=1, cusId=${cusId})}">맨앞</a>
+			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=${companyCurrentPage - 1}, cusId=${cusId})}">이전</a>
+			    
 			    <span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
-			        <a th:href="@{/main(companyPage=${i})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
+			        <a th:href="@{/main(companyPage=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
 			    </span>
-			
-			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyCurrentPage + 1})}">다음</a>
-			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyTotalPages})}">맨끝</a>
+			    
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyCurrentPage + 1}, cusId=${cusId})}">다음</a>
+			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyTotalPages}, cusId=${cusId})}">맨끝</a>
 			</div>
-	        
-	        
 		</article>
 		
 		
@@ -236,7 +233,7 @@
 		<article class="second_line">
 			<h1>농업뉴스</h1>
 			<div>
-				<a href="./news" style="float: right;">더보기>></a>
+				<a th:href="@{/news(cusId=${cusId})}" style="float: right;">더보기>></a>
 			</div>
 			<table border="1" style="width: 550px;">
 	            <tr th:each="news : ${latestNews}">
@@ -255,28 +252,28 @@
 			<h1>배 발병 예측</h1>
 			<table border="1" class="outbreak">
 	            <tr>
-					<td>병명</td>
-	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">붉은별무늬병</a></td>
-	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은별무늬병</a></td>
-	                <td><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은무늬병</a></td>
+					<td style="text-align: center;">병명</td>
+	                <td style="text-align: center;"><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">붉은별무늬병</a></td>
+	                <td style="text-align: center;"><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은별무늬병</a></td>
+	                <td style="text-align: center;"><a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">검은무늬병</a></td>
 	            </tr>
 	            <tr>
-					<td>발병사진</td>
-	                <td><img alt="상태값정보" src="./assets/img/CedarAppleRust.jfif" width="100" height="80"></td>
-	                <td><img alt="상태값정보" src="./assets/img/Scab.png" width="100" height="80"></td>
-	                <td><img alt="상태값정보" src="./assets/img/LeafSpot.jfif" width="100" height="80"></td>
+					<td style="text-align: center;">발병사진</td>
+	                <td style="text-align: center;"><img alt="상태값정보" src="./assets/img/CedarAppleRust.jfif" width="100" height="80"></td>
+	                <td style="text-align: center;"><img alt="상태값정보" src="./assets/img/Scab.png" width="100" height="80"></td>
+	                <td style="text-align: center;"><img alt="상태값정보" src="./assets/img/LeafSpot.jfif" width="100" height="80"></td>
 	            </tr>
 	            <tr>
-					<td>발병확률</td>
-	                <td>1.2%</td>
-	                <td>3.0%</td>
-	                <td>2.6%</td>
+					<td style="text-align: center;">발병확률</td>
+	                <td style="text-align: center;">1.2%</td>
+	                <td style="text-align: center;">3.0%</td>
+	                <td style="text-align: center;">2.6%</td>
 	            </tr>
 	            <tr>
-					<td>추천약제</td>
-	                <td><button type="button" id="redStar" name="sAgApplcDbyhsNm1" value="붉은별무늬병">붉은별무늬병</button></td>
-	                <td><button type="button" id="blackStar" name="sAgApplcDbyhsNm1" value="검은별무늬병">검은별무늬병</button></td>
-	                <td><button type="button" id="black" name="sAgApplcDbyhsNm1" value="검은무늬병">검은무늬병</button></td>
+					<td style="text-align: center;">추천약제</td>
+	                <td style="text-align: center;"><button type="button" id="redStar" name="sAgApplcDbyhsNm1" value="붉은별무늬병">붉은별무늬병</button></td>
+	                <td style="text-align: center;"><button type="button" id="blackStar" name="sAgApplcDbyhsNm1" value="검은별무늬병">검은별무늬병</button></td>
+	                <td ><button type="button" id="black" name="sAgApplcDbyhsNm1" value="검은무늬병">검은무늬병</button></td>
 	            </tr>
 		    </table>
 			<form action="https://psis.rda.go.kr/psis/agc/res/agchmRegistStusLst.ps" method="post" target="_blank">
