@@ -2,91 +2,118 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Signup</title>
+    <link rel="stylesheet" href="../css/signup.css">
 </head>
 <body>
-    <h2>회원가입</h2>
+    <h2 style="text-align: center;">회원가입</h2>
     <form action="/register" method="post">
+    
         <!-- 아이디 인풋 -->
-        <label for="userId">아이디:</label>
-        <input type="text" id="userId" name="userId" required>
-        <button type="button" onclick="checkDuplicateId()">아이디 중복확인</button>
-        <br><br>
+        <div class="dropdown-group">
+        	<label for="userId">아이디:</label>
+        	<input type="text" id="userId" name="userId" required>
+        </div>
+        <br>
+        <button style="float:right;" type="button" onclick="checkDuplicateId()">아이디 중복확인</button>
+        <br><br><br>
 
         <!-- 비밀번호 인풋 -->
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-
+        <div class="dropdown-group">
+	        <label for="password">비밀번호:</label>
+	        <input type="password" id="password" name="password" required>
+		</div>
+		<br>
+		
         <!-- 비밀번호 확인 인풋 -->
-        <label for="confirmPassword">비밀번호 확인:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <br><br>
-
+        <div class="dropdown-group">
+	        <label for="confirmPassword">비밀번호 확인:</label>
+	        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <br>
+        
+		
         <!-- 이메일 인풋 -->
-        <label for="email">이메일:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-
-        <!-- 생년월일 드롭박스 -->
-        <label for="birthYear">생년월일:</label>
-        <select id="birthYear" name="birthYear" required>
-            <option value="">년</option>
-            <!-- 추가 생년월일 옵션 -->
-            <script>
-                for (let i = new Date().getFullYear(); i >= 1900; i--) {
-                    document.write('<option value="' + i + '">' + i + '년</option>');
-                }
-            </script>
-        </select>
-        <select id="birthMonth" name="birthMonth" required>
-            <option value="">월</option>
-            <script>
-                for (let i = 1; i <= 12; i++) {
-                    document.write('<option value="' + i + '">' + i + '월</option>');
-                }
-            </script>
-        </select>
-        <select id="birthDay" name="birthDay" required>
-            <option value="">일</option>
-            <script>
-                for (let i = 1; i <= 31; i++) {
-                    document.write('<option value="' + i + '">' + i + '일</option>');
-                }
-            </script>
-        </select>
-        <br><br>
-
+        <div class="dropdown-group">
+	        <label for="email">이메일:</label>
+	        <input type="email" id="email" name="email" required>
+        </div>
+		<br>
+		
+        <!-- 생년월일 드롭박스 --> 
+        <div class="dropdown-group">
+	        <label for="birthYear" style="width:200px;">생년월일:</label>
+	        <div style="display: flex; gap: 5px;">
+		        <select id="birthYear" name="birthYear" required style="width: 100px;">
+		            <option value="">년</option>
+		            <!-- 추가 생년월일 옵션 -->
+		            <script>
+		                for (let i = new Date().getFullYear(); i >= 1900; i--) {
+		                    document.write('<option value="' + i + '">' + i + '년</option>');
+		                }
+		            </script> 
+		        </select>
+		        <select id="birthMonth" name="birthMonth" required style="width: 100px;">
+		            <option value="">월</option>
+		            <script >
+		                for (let i = 1; i <= 12; i++) {
+		                    document.write('<option value="' + i + '">' + i + '월</option>');
+		                }
+		            </script>
+		        </select>
+		        <select id="birthDay" name="birthDay" required style="width: 100px;">
+		            <option value="">일</option>
+		            <script>
+		                for (let i = 1; i <= 31; i++) {
+		                    document.write('<option value="' + i + '">' + i + '일</option>');
+		                }
+		            </script>
+		        </select>
+	        </div>
+        </div>
+        <br>
+        
         <!-- 핸드폰번호 입력 인풋 -->
-  		<label for="phoneNumber">핸드폰번호:</label>
-        <select id="phonePrefix" name="phonePrefix" required>
-            <option value="010">010</option>
-            <option value="011">011</option>
-            <option value="016">016</option>
-            <option value="017">017</option>
-            <option value="018">018</option>
-            <option value="019">019</option>
-        </select>
-        -
-        <input type="tel" id="phoneMiddle" name="phoneMiddle" placeholder="1234" pattern="[0-9]{4}" required>
-        -
-        <input type="tel" id="phoneLast" name="phoneLast" placeholder="5678" pattern="[0-9]{4}" required>
+        <div class="dropdown-group">
+        	<label for="phoneNumber">핸드폰번호:</label>
+	        <select id="phonePrefix" name="phonePrefix" required>
+	            <option value="010">010</option>
+	            <option value="011">011</option>
+	            <option value="016">016</option>
+	            <option value="017">017</option>
+	            <option value="018">018</option>
+	            <option value="019">019</option>
+	        </select>
+	        <div style="padding-bottom: 20px;">-</div>
+	        <input type="tel" id="phoneMiddle" name="phoneMiddle" placeholder="1234" pattern="[0-9]{4}" required>
+	        <div style="padding-bottom: 20px;">-</div>
+	        <input type="tel" id="phoneLast" name="phoneLast" placeholder="5678" pattern="[0-9]{4}" required>
+        </div>
         <br><br>
+        
         <!-- 카카오 예찰알림서비스 동의 비동의 라디오박스 -->
-        <label>카카오 예찰알림서비스:</label>
-        <input type="radio" id="kakaoAgree" name="kakaoNotification" value="agree" required>
-        <label for="kakaoAgree">동의</label>
-        <input type="radio" id="kakaoDisagree" name="kakaoNotification" value="disagree">
-        <label for="kakaoDisagree">비동의</label>
-        <br><br>
+        <div class="dropdown-group">
+        	<label>카카오 예찰알림서비스:</label>
+        	<div class="radio-group">
+		        <input type="radio" id="kakaoAgree" name="kakaoNotification" value="agree" required>
+		        <label style="width:40px;" for="kakaoAgree">동의</label>
+		        <input type="radio" id="kakaoDisagree" name="kakaoNotification" value="disagree">
+		        <label style="width: 50px;" for="kakaoDisagree">비동의</label>
+	        </div>
+        </div>
+        <br>
 
         <!-- 개인정보 수집 및 이용 동의 라디오박스 -->
-        <label>개인정보 수집 및 이용 동의:</label>
-        <input type="radio" id="privacyAgree" name="privacyConsent" value="agree" required>
-        <label for="privacyAgree">동의</label>
-        <input type="radio" id="privacyDisagree" name="privacyConsent" value="disagree">
-        <label for="privacyDisagree">비동의</label>
+        <div class="dropdown-group">
+        	<label>개인정보 수집 및 이용 동의:</label>
+        	<div class="radio-group">
+		        <input type="radio" id="privacyAgree" name="privacyConsent" value="agree" required>
+		        <label style="width:40px;" for="privacyAgree">동의</label>
+		        <input type="radio" id="privacyDisagree" name="privacyConsent" value="disagree">
+		        <label style="width: 50px;" for="privacyDisagree">비동의</label>
+	        </div>
+		</div>
+        
         <br><br>
-
         <button type="submit">회원가입</button>
     </form>
 

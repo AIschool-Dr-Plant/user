@@ -1,0 +1,154 @@
+/* 스타일 초기화 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+form {
+    width: 500px;
+    margin: 30px auto;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #333333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #55c78e;
+}
+
+button[type="button"] {
+    background-color: #35c759;
+    color: #ffffff;
+    border: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+button[type="button"]:hover {
+    background-color: #2aad4f;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #35c759;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2aad4f;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label[for="kakaoAgree"],
+label[for="kakaoDisagree"],
+label[for="privacyAgree"],
+label[for="privacyDisagree"] {
+    margin-right: 15px;
+}
+
+
+/* Flexbox로 드롭박스 정렬 */
+.dropdown-group {
+    display: flex;
+    align-items: center; /* 드롭박스와 텍스트의 수직 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+}
+
+.dropdown-group select {
+    width: 150px; /* 드롭다운의 기본 너비 유지 */
+    padding: 5px; /* 드롭다운에 적당한 여백 추가 */
+    border: 1px solid #ddd; /* 기본 테두리 스타일 */
+    border-radius: 5px;
+}
+.dropdown-group script {
+    width: 95px;
+}
+.dropdown-group label {
+    font-weight: bold;
+    color: #333; /* 텍스트 색상 */
+    width: 300px;
+}
+.dropdown-group button {
+    width: 300px;
+}
+#kakaoAgree, #kakaoDisagree,
+#privacyAgree, #privacyDisagree{
+	margin-bottom: 3px;
+}
+
+#phoneMiddle, #phoneLast {
+     width: 60px;
+     height: 10px;
+}
+
+/* 라디오 버튼 그룹 정렬 */
+
+
+.radio-group label {
+    display: flex; /* 라벨 안에서 버튼과 텍스트를 정렬 */
+    align-items: center; /* 라디오 버튼과 텍스트를 수직 정렬 */
+    gap: 5px; /* 버튼과 텍스트 간 간격 */
+    margin:0px;
+}
+
+
+.radio-group {
+    color: #333333;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row; /* 가로 정렬 */
+    align-items: center; /* 라디오 버튼과 텍스트 수직 정렬 */
+    gap: inherit; /* 라디오 버튼 항목 간 간격 */
+    width:400px;
+    vertical-align: sub; 
+}
+
+.radio-group input[type="radio"] {
+    margin-left: 30px;
+}
+
+
