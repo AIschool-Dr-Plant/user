@@ -8,7 +8,6 @@ body {
 }
 
 main {
-    padding: 20px;
     max-width: 1200px;
     margin: auto;
 }
@@ -28,6 +27,11 @@ th, td {
 th {
     background-color: #f4f4f4;
     font-weight: bold;
+    width:180px;
+}
+
+td {
+    width:400px;
 }
 
 /* 드롭다운 및 버튼 스타일 */

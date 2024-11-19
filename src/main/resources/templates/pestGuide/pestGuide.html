@@ -3,24 +3,38 @@
 <head>
     <title>pestGuide</title>
     <link rel="stylesheet" href="./css/pestguide.css"> 
-   	<script>
-        function showTable(tableId) {
-            document.getElementById('table1').style.display = 'none';
-            document.getElementById('table2').style.display = 'none';
-            document.getElementById('table3').style.display = 'none';
-            
-            document.getElementById(tableId).style.display = 'block';
+    <style>
+        .selected-button {
+            font-weight: bold;
         }
-    </script>
+    </style>
+	<script>
+	    function showTable(tableId, button) {
+	        // Hide all tables
+	        document.getElementById('table1').style.display = 'none';
+	        document.getElementById('table2').style.display = 'none';
+	        document.getElementById('table3').style.display = 'none';
+	
+	        // Show the selected table
+	        document.getElementById(tableId).style.display = 'block';
+	
+	        // Remove the 'selected-button' class from all buttons
+	        const buttons = document.querySelectorAll('button');
+	        buttons.forEach(btn => btn.classList.remove('selected-button'));
+	
+	        // Add the 'selected-button' class to the clicked button
+	        button.classList.add('selected-button');
+	    }
+	</script>
 </head>
 <body>
 	<div th:replace="fragments/header :: siteHeader"></div>
     <main>
-	    <h3>배 병해충도감</h3>
+	    <h3 style="font-size:25px;">배 병해충도감</h3>
 	    <div>
-		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table1')">병 피해</button>
-		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table2')">해충피해</button>
-		    <button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table3')">천적곤충</button>
+			<button class="w-btn-outline w-btn-gray-outline selected-button" type="button" onclick="showTable('table1', this)" style="font-size: 20px; width:150px;">병 피해</button>
+			<button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table2', this)" style="font-size: 20px; width:150px;">해충피해</button>
+			<button class="w-btn-outline w-btn-gray-outline" type="button" onclick="showTable('table3', this)" style="font-size: 20px; width:150px;">천적곤충</button>
 		</div>
 	    <div id="table1" class="table-container" style="display: block;">
 	        <table border="1">
@@ -489,7 +503,20 @@
 	    </div>
 		<div id="table3" class="table-container" style="display: block;">
 			<table border="1">
-			
+				<tr>
+	                <td>
+	                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=E00000027&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+	                		<img src="./assets/img/womersleyi.jfif" width=150px, height=150px/>
+	                	</a>
+	               	</td>
+	            </tr>
+	        	<tr>
+	                <td>
+	                	<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=E00000027&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">
+	                		긴털이리응애
+	                	</a>
+	                </td>
+	            </tr>
 			</table>
 		</div>
     </main>

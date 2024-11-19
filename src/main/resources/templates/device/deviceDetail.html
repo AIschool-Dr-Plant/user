@@ -39,28 +39,28 @@
 	    <div style="display: flex; align-items: center; margin: 20px;">
 		    <div class="infmt" style="margin-right: 80px;">
 			    <!-- 장치정보 -->
-			    <p>장치정보</p>
+			    <p style="font-size:20px; font-weight: bold;">장치정보</p>
 			    <div id="deviceInfo">
 			        <table border="1">
 			            <tbody>
 			                <tr>
-			                    <th>Device ID</th>
+			                    <th>장치ID</th>
 			                    <td id="devIdCell"></td>
 			                </tr>
 			                <tr>
-			                    <th>Device Kind Code</th>
+			                    <th>장치종류</th>
 			                    <td id="devKindCdCell"></td>
 			                </tr>
 			                <tr>
-			                    <th>Device Name</th>
+			                    <th>장치이름</th>
 			                    <td id="devNmCell"></td>
 			                </tr>
 			                <tr>
-			                    <th>Manufacture Date</th>
+			                    <th>제조일</th>
 			                    <td id="manufDtCell"></td>
 			                </tr>
 			                <tr>
-			                    <th>Target Device ID</th>
+			                    <th>연결수신기</th>
 			                    <td id="tgtDevIdCell"></td>
 			                </tr>
 			            </tbody>
@@ -69,7 +69,7 @@
 		    </div>
 		    <div class="infmt" style="margin-right: 80px;">
 			    <!-- 장치등록정보 -->
-			    <p>장치등록정보</p>
+			    <p style="font-size:20px; font-weight: bold;">장치등록정보</p>
 			    <div id="NickAndCusId" >
 			        <table border="1">
 			            <tbody>
@@ -126,6 +126,22 @@
 			                level: 3
 			            };
 			            var map = new kakao.maps.Map(container, options);
+			            
+			            
+			            // 여러 개의 마커 정보를 담은 배열
+			            var markerPositions = [
+			               new kakao.maps.LatLng(35.029096, 126.617802), 
+			            ];
+			            
+			            // 지도에 마커를 생성하고 표시한다
+			            // 배열에 담긴 위치들에 마커를 생성한다
+			            for (var i = 0; i < markerPositions.length; i++) {
+			                var marker = new kakao.maps.Marker({
+			                    position: markerPositions[i], // 마커의 좌표
+			                    map: map // 마커를 표시할 지도 객체
+			                });
+			            }
+
 			        });
 			    };
 			
