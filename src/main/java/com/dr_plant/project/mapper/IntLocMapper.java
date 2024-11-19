@@ -30,5 +30,7 @@ public interface IntLocMapper {
 	
 	@Insert("INSERT INTO INT_LOC_TB (LOC_NICK, DEV_ID, RGN_ID, CUS_ID, REG_ID, REG_DT) VALUES (#{LOC_NICK}, #{DEV_ID}, #{RGN_ID}, #{CUS_ID}, #{CUS_ID}, NOW())")
 	void insertLocation(IntLocTb location);
-
+	
+	@Select("SELECT LOC_NICK, CUS_ID, RGN_ID FROM INT_LOC_TB WHERE LOC_NICK = #{locNick}")
+	IntLocTb findLocNickAndCusIdByLocNick(String locNick);
 }

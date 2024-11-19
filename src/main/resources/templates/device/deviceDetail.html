@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Device Detail</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
+   <style>
         canvas {
             display: block;
             margin: auto;
@@ -12,12 +11,101 @@
             height: 600px; /* 조정 가능 */
         }
     </style>
+</head>
+<body>
+    <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+    <div th:replace="fragments/header :: siteHeader"></div>
+    <div>
+        <select id="locNickSelect" name="locNick" onchange="fetchDeviceData(this.value, 1)">
+            <th:block th:each="locNick : ${locNickList}">
+                <option th:value="${locNick}" th:text="${locNick}"></option>
+            </th:block>
+        </select>
+	</div>
+	<div>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 1)">온습도 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 2)">풍속 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 3)">기압 그래프</button>
+        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 4)">강수량 그래프</button>
+	</div>
+	<div>
+        <canvas id="chart"></canvas>
+    </div>
+    <div id="deviceInfo">
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>Device ID</th>
+                    <td id="devIdCell"></td>
+                </tr>
+                <tr>
+                    <th>Device Kind Code</th>
+                    <td id="devKindCdCell"></td>
+                </tr>
+                <tr>
+                    <th>Device Name</th>
+                    <td id="devNmCell"></td>
+                </tr>
+                <tr>
+                    <th>Manufacture Date</th>
+                    <td id="manufDtCell"></td>
+                </tr>
+                <tr>
+                    <th>Target Device ID</th>
+                    <td id="tgtDevIdCell"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="NickAndCusId">
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>LOC_NICK</th>
+                    <td id="locNickCell"></td>
+                </tr>
+                <tr>
+                    <th>CUS_ID</th>
+                    <td id="cusIdCell"></td>
+                </tr>
+                <tr>
+                    <th>RGN_ID</th>
+                    <td id="rgnIdCell"></td>
+                </tr>
+                <tr>
+                    <th>RGN_NM</th>
+                    <td id="rgnNmCell"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="map" style="width:500px;height:400px;"></div>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8f2b4c9fe7d382fefc85f0f7a12621c&libraries=services"></script>
+    
     <script>
     let chartInstance = null; // Chart instance stored globally
     
-    window.onload = function() {
+    window.onload = function() {	
+        document.getElementById('locNickSelect').addEventListener('change', function () {
+            const locNick = this.value;
+            fetchLocNickAndCusId(locNick);
+        });
+
         const locNick = document.getElementById('locNickSelect').value;
         fetchDeviceData(locNick, 1); // Load the temperature and humidity chart on page load
+        fetchDeviceInfo(locNick);
+        fetchLocNickAndCusId(locNick);
+        
+      //카카오지도
+        kakao.maps.load(function() {
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(35.029096, 126.617802),
+                level: 3
+            };
+            var map = new kakao.maps.Map(container, options);
+        });
     };
 
     function fetchDeviceData(locNick, buttonType) {
@@ -101,24 +189,47 @@
         }
         return color;
     }
-    </script>
-</head>
-<body>
-    <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
-    <div th:replace="fragments/header :: siteHeader"></div>
-    <div>
-        <select id="locNickSelect" name="locNick" onchange="fetchDeviceData(this.value, 1)">
-            <th:block th:each="locNick : ${locNickList}">
-                <option th:value="${locNick}" th:text="${locNick}"></option>
-            </th:block>
-        </select>
-
-        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 1)">온습도 그래프</button>
-        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 2)">풍속 그래프</button>
-        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 3)">기압 그래프</button>
-        <button onclick="fetchDeviceData(document.getElementById('locNickSelect').value, 4)">강수량 그래프</button>
-
-        <canvas id="chart"></canvas>
-    </div>
+  	//DevTb 정보 가져오기
+    function fetchDeviceInfo(locNick) {
+        fetch(`/getDeviceInfo?locNick=${locNick}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // JSON 데이터 구조 확인
+                if (data) {
+                    document.getElementById('devIdCell').textContent = data.DEV_ID || 'N/A';
+                    document.getElementById('devKindCdCell').textContent = data.DEV_KIND_CD || 'N/A';
+                    document.getElementById('devNmCell').textContent = data.DEV_NM || 'N/A';
+                    document.getElementById('manufDtCell').textContent = data.MANUF_DT ? new Date(data.MANUF_DT).toLocaleString() : 'N/A';
+                    document.getElementById('tgtDevIdCell').textContent = data.TGT_DEV_ID || 'N/A';
+                } else {
+                    document.getElementById('devIdCell').textContent = 'Not Found';
+                    document.getElementById('devKindCdCell').textContent = 'Not Found';
+                    document.getElementById('devNmCell').textContent = 'Not Found';
+                    document.getElementById('manufDtCell').textContent = 'Not Found';
+                    document.getElementById('tgtDevIdCell').textContent = 'Not Found';
+                }
+            });
+    }
+  	
+  	//IntLocTb의 정보 가져오기
+    function fetchLocNickAndCusId(locNick) {
+        fetch(`/getLocNickAndCusId?locNick=${locNick}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    document.getElementById('locNickCell').textContent = data.LOC_NICK || 'N/A';
+                    document.getElementById('cusIdCell').textContent = data.CUS_ID || 'N/A';
+                    document.getElementById('rgnIdCell').textContent = data.RGN_ID || 'N/A';
+                    document.getElementById('rgnNmCell').textContent = data.RGN_NM || 'N/A';
+                    
+                } else {
+                    document.getElementById('locNickCell').textContent = 'Not Found';
+                    document.getElementById('cusIdCell').textContent = 'Not Found';
+                    document.getElementById('rgnIdCell').textContent = 'Not Found';
+                    document.getElementById('rgnNmCell').textContent = 'Not Found';
+                }
+            });
+    }
+    </script> 
 </body>
 </html>
