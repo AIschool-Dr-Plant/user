@@ -2,19 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>FindID</title>
+    <link rel="stylesheet" href="../css/findID.css">
 </head>
 <body>
     <h2>아이디 찾기</h2>
     <form action="/submitForm" method="post">
-        <div>
+        <div class="dropdown-group">
             <label for="name">이름:</label>
             <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
         </div>
-        <div>
+        <br><br>
+        <div class="dropdown-group">
             <label for="email">이메일:</label>
             <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
         </div>
-        <div>
+        <br><br>
+        <div class="container">
             <button type="submit">아이디 찾기</button>
         </div>
     </form>
