@@ -5,6 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<button id="btnClick" type="button">클릭</button>
+	<script type="text/javascript">
+		document.getElementById('btnClick').addEventListener('click', function() {
+			fetch('https://localhost:5050/api/predict', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ 'date': '2023-07-14' }) // 전송할 데이터
+			})
+			.then(response => response.json())
+			.then(data => {
+				console.log("Success:", JSON.stringify(data));
+			})
+			.catch(error => {
+				console.error("Error:", error);
+			});
 
+		});
+	</script>
 </body>
+
 </html>
