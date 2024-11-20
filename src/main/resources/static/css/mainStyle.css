@@ -124,3 +124,51 @@ table{
 }
 
 
+button {
+    margin: 2px;
+    width: 250px;
+}
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 5x 5px;
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    font-weight: 100;
+    transition: 0.25s;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 5px 5px;
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    font-weight: 100;
+    transition: 0.25s;
+}
+
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
+.w-btn-gray {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+.w-btn-gray-outline:hover {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
