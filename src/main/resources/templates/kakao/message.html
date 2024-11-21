@@ -18,7 +18,7 @@
 		<script>
 			function loginWithKakao() {
 				Kakao.Auth.authorize({
-					redirectUri: 'https://123.100.174.98:8184/api/kakaoLogin',
+					redirectUri: 'https://123.100.174.98:8184/kakao/login',
 					state: 'sendme_feed',
 					scope: 'talk_message', // 앱 동의 항목 설정 및 사용자 동의 필요
 				});
@@ -92,16 +92,18 @@
 					Kakao.Auth.setAccessToken(token);
 					Kakao.Auth.getStatusInfo()
 					.then(function(res) {
+						console.log("success",res);
 						if (res.status === 'connected') {
 							document.getElementById('token-result').innerText = 'login success, token: ' + Kakao.Auth.getAccessToken();
 						}
 					})
 					.catch(function(err) {
+						console.error("error",err);
 						Kakao.Auth.setAccessToken(null);
 					});
-					document.querySelector('#token-result').innerText = 'login success, ready to send a message';
-					document.querySelector('button.api-btn').style.visibility = 'visible';
-					document.querySelector('button.api-btn2').style.visibility = 'visible';
+// 					document.querySelector('#token-result').innerText = 'login success, ready to send a message';
+// 					document.querySelector('button.api-btn').style.visibility = 'visible';
+// 					document.querySelector('button.api-btn2').style.visibility = 'visible';
 				}
 			}
 		

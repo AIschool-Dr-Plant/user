@@ -1,230 +1,230 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main</title>
-    <link rel="stylesheet" href="./css/mainStyle.css"> 
+	<title>Main</title>
+	<link rel="stylesheet" href="./css/mainStyle.css"> 
 	<style>
-	    .current {
-	        font-weight: bold;
-	        pointer-events: none; /* 클릭 비활성화 */
-	        color: #000; /* 텍스트 색상 */
-	    }
+		.current {
+			font-weight: bold;
+			pointer-events: none; /* 클릭 비활성화 */
+			color: #000; /* 텍스트 색상 */
+		}
 	</style>
 </head>
 <body>
-    <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
-    <div th:replace="fragments/header :: siteHeader"></div>
-    
+	<!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+	<div th:replace="fragments/header :: siteHeader"></div>
+	
 	<main>
 		<!--NCPMS 병해충 발생정보<-->
 		<article class="first_line">
 			<h1 style="margin-bottom: 0;">병해충 발생정보</h1>
 			<p style="float: right; margin-top: 0;">제14호(2024.11.1.~2024.11.30.)</p>
-        	<img alt="상태값정보" src="./assets/img/label.PNG" style="clear:both; float: right; width:50%;">
+			<img alt="상태값정보" src="./assets/img/label.PNG" style="clear:both; float: right; width:50%;">
 			
 			
 			<br>
 			<div class="card" style="clear:both;">
 				<table border="1">
-			        <tr class="pests">
-			            <td>작물명</td>
-			            <td th:text="${data[0].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[0].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[0].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>            
-			        </tr>
-		        </table>
+					<tr class="pests">
+						<td>작물명</td>
+						<td th:text="${data[0].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[0].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[0].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>			
+					</tr>
+				</table>
 				<table border="1">
-			        <tr>
-			            <td>작물명</td>
-			            <td th:text="${data[1].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[1].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[1].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>  
-			        </tr>
-		        </table>
-		        <table border="1">
-			        <tr>
-			            <td>작물명</td>
-			            <td th:text="${data[2].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[2].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[2].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>  
-			        </tr>
-		        </table>
-	        </div>
-	        
-	        <div class="card3">
-		        <table border="1">
-			        <tr>
-			            <td>작물명</td>
-			            <td th:text="${data[3].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[3].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[3].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>  
-			        </tr>
-		        </table>
-	        </div>
-	        
-	        <div class="card">
-		        <table border="1">
-			        <tr>
-			            <td>작물명</td>
-			            <td th:text="${data[4].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[4].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[4].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>  
-			        </tr>
-		        </table>
-		        
-		        <table border="1">
-			        <tr>
-			            <td>작물명</td>
-			            <td th:text="${data[5].PEST_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>병명</td>
-			            <td th:text="${data[5].CRP_NM}"></td>
-			        </tr>
-			       	<tr>
-			            <td>작물분류정보</td>
-			            <td th:text="${data[5].CRP_CLF_NM}"></td>
-			        </tr>
-			        <tr>
-			            <td>상태값</td>
-			            <td>
-					        <span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
-				            <span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
-			            </td>   
-			        </tr>
-		        </table>
-		        </div>
-		        <p style="float:right;"><a href="https://ncpms.rda.go.kr/npms/Main.np">출처 : 국가농작물병채충관리시스템</a></p>
-				<div style="clear:both; text-align: center; padding-top: 0px;">
-				    <a th:if="${currentPage > 1}" th:href="@{/main(page=1, cusId=${cusId})}">맨앞</a>
-				    <a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1}, cusId=${cusId})}">이전</a>
-				    
-				    <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-				        <a th:href="@{/main(page=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == currentPage ? 'current' : ''}"></a>
-				    </span>
-				    
-				    <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${currentPage + 1}, cusId=${cusId})}">다음</a>
-				    <a th:if="${currentPage < totalPages}" th:href="@{/main(page=${totalPages}, cusId=${cusId})}">맨뒤</a>
+					<tr>
+						<td>작물명</td>
+						<td th:text="${data[1].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[1].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[1].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>  
+					</tr>
+				</table>
+				<table border="1">
+					<tr>
+						<td>작물명</td>
+						<td th:text="${data[2].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[2].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[2].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>  
+					</tr>
+				</table>
+			</div>
+			
+			<div class="card3">
+				<table border="1">
+					<tr>
+						<td>작물명</td>
+						<td th:text="${data[3].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[3].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[3].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>  
+					</tr>
+				</table>
+			</div>
+			
+			<div class="card">
+				<table border="1">
+					<tr>
+						<td>작물명</td>
+						<td th:text="${data[4].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[4].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[4].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>  
+					</tr>
+				</table>
+				
+				<table border="1">
+					<tr>
+						<td>작물명</td>
+						<td th:text="${data[5].PEST_NM}"></td>
+					</tr>
+					<tr>
+						<td>병명</td>
+						<td th:text="${data[5].CRP_NM}"></td>
+					</tr>
+				   	<tr>
+						<td>작물분류정보</td>
+						<td th:text="${data[5].CRP_CLF_NM}"></td>
+					</tr>
+					<tr>
+						<td>상태값</td>
+						<td>
+							<span th:if="${data[5].STATE_ID == 1}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: red; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 2}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ff6200; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID == 3}" th:text="${data[5].STATE_NM}" style="display: inline-block; width: 80px; height: 20px; background-color: #ffd000; border-radius: 5px; color:white;"></span>
+							<span th:if="${data[5].STATE_ID != 1 && data[0].STATE_ID != 2 && data[0].STATE_ID != 3}" style="display: inline-block; width: 80px; height: 20px; background-color: grey; border-radius: 5px; color:white;"></span>
+						</td>   
+					</tr>
+				</table>
 				</div>
-	        <br>
-	        <!--관심위치 인근 방제업체 리스트-->
+				<p style="float:right;"><a href="https://ncpms.rda.go.kr/npms/Main.np">출처 : 국가농작물병채충관리시스템</a></p>
+				<div style="clear:both; text-align: center; padding-top: 0px;">
+					<a th:if="${currentPage > 1}" th:href="@{/main(page=1, cusId=${cusId})}">맨앞</a>
+					<a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1}, cusId=${cusId})}">이전</a>
+					
+					<span th:each="i : ${#numbers.sequence(1, totalPages)}">
+						<a th:href="@{/main(page=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == currentPage ? 'current' : ''}"></a>
+					</span>
+					
+					<a th:if="${currentPage < totalPages}" th:href="@{/main(page=${currentPage + 1}, cusId=${cusId})}">다음</a>
+					<a th:if="${currentPage < totalPages}" th:href="@{/main(page=${totalPages}, cusId=${cusId})}">맨뒤</a>
+				</div>
+			<br>
+			<!--관심위치 인근 방제업체 리스트-->
 			<h1 style="margin-top: 0;">관심위치 인근 방제업체 리스트</h1>
 			<label for="dropdown">관심위치</label>
 			<select id="dropdown" name="options">
-		        <option value="나주배밭1">나주배밭1</option>
-		        <option value="나주배밭2">나주배밭2</option>
-		        <option value="나주배밭3">나주배밭3</option>
-		    </select>
-		    <a th:href="@{/mypage(cusId=${cusId})}" style="float: right; margin-right: 15px;">+관심위치</a>
-		    
-		    <a th:href="@{/devicedetail(cusId=${cusId})}" style="clear:both; float: right; margin-right: 15px;">환경정보수집장치 상세보기>></a>
-		    <br>
+				<option value="나주배밭1">나주배밭1</option>
+				<option value="나주배밭2">나주배밭2</option>
+				<option value="나주배밭3">나주배밭3</option>
+			</select>
+			<a th:href="@{/mypage(cusId=${cusId})}" style="float: right; margin-right: 15px;">+관심위치</a>
+			
+			<a th:href="@{/devicedetail(cusId=${cusId})}" style="clear:both; float: right; margin-right: 15px;">환경정보수집장치 상세보기>></a>
+			<br>
 			<table border="1" class="ncpmsoc">
-			    <thead>
-			        <tr>
-			            <th>업체명</th>
-			            <th>내용</th>
-			            <th style="width:280px;">사업 구분</th>
-			            <th style="width:70px; text-align: center;">주소</th>
-			        </tr>
-			    </thead>
-			    <tbody th:each="cmp : ${companyData}">
-			        <tr>
-			            <td th:text="${cmp.CMP_NM}"></td>
-			            <td th:text="${cmp.CONT}"></td>
-			            <td th:text="${cmp.BIZ_DIV}"></td>
-			            <td style="text-align: center;"><a th:href="'https://map.kakao.com//link/search/' + ${cmp.FULL_ADDR}" th:text="'상세주소'" target="_blank"></a></td>
-			        </tr>
-			    </tbody>
+				<thead>
+					<tr>
+						<th>업체명</th>
+						<th>내용</th>
+						<th style="width:280px;">사업 구분</th>
+						<th style="width:70px; text-align: center;">주소</th>
+					</tr>
+				</thead>
+				<tbody th:each="cmp : ${companyData}">
+					<tr>
+						<td th:text="${cmp.CMP_NM}"></td>
+						<td th:text="${cmp.CONT}"></td>
+						<td th:text="${cmp.BIZ_DIV}"></td>
+						<td style="text-align: center;"><a th:href="'https://map.kakao.com//link/search/' + ${cmp.FULL_ADDR}" th:text="'상세주소'" target="_blank"></a></td>
+					</tr>
+				</tbody>
 			</table>
 			<br>
 			<div style="clear:both; text-align: center;">
-			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=1, cusId=${cusId})}">맨앞</a>
-			    <a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=${companyCurrentPage - 1}, cusId=${cusId})}">이전</a>
-			    
-			    <span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
-			        <a th:href="@{/main(companyPage=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
-			    </span>
-			    
-			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyCurrentPage + 1}, cusId=${cusId})}">다음</a>
-			    <a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyTotalPages}, cusId=${cusId})}">맨끝</a>
+				<a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=1, cusId=${cusId})}">맨앞</a>
+				<a th:if="${companyCurrentPage > 1}" th:href="@{/main(companyPage=${companyCurrentPage - 1}, cusId=${cusId})}">이전</a>
+				
+				<span th:each="i : ${#numbers.sequence(1, companyTotalPages)}">
+					<a th:href="@{/main(companyPage=${i}, cusId=${cusId})}" th:text="${i}" th:classappend="${i == companyCurrentPage ? 'current' : ''}"></a>
+				</span>
+				
+				<a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyCurrentPage + 1}, cusId=${cusId})}">다음</a>
+				<a th:if="${companyCurrentPage < companyTotalPages}" th:href="@{/main(companyPage=${companyTotalPages}, cusId=${cusId})}">맨끝</a>
 			</div>
 		</article>
 		
@@ -239,7 +239,7 @@
 				<a th:href="@{/news(cusId=${cusId})}" style="float: right;">더보기>></a>
 			</div>
 			<table border="1" style="width: 550px;">
-	            <tr th:each="news : ${latestNews}">
+				<tr th:each="news : ${latestNews}">
 					<td style="padding-top: 2px; padding-bottom: 2px;">
 						<a th:href="${news.URL}" th:text="${news.TITLE}"  style="font-size:18px; font-weight: normal;" ></a>
 						<br>
@@ -247,8 +247,8 @@
 						<span th:text="${news.REPORTER}"></span>
 						<span th:text="${news.PUB_DT}"></span>
 					</td>
-	            </tr>
-		    </table>
+				</tr>
+			</table>
 		
 			<br>
 			
@@ -336,7 +336,7 @@
 						<button class="w-btn-outline w-btn-gray-outline" type="button" id="black" name="sAgApplcDbyhsNm1" value="검은무늬병">추천약제</button>
 					</td>
 				</tr>			
-		    </table>
+			</table>
 			<form action="https://psis.rda.go.kr/psis/agc/res/agchmRegistStusLst.ps" method="post" target="_blank">
 				<input type="hidden" name="pageIndex" value="1">
 				<input type="hidden" name="sortOrder" value="">
@@ -414,6 +414,7 @@
 				});
 			</script>
 	</article>
-    </main>
+	</main>
 </body>
+
 </html>
