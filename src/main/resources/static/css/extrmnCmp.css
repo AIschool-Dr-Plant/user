@@ -1,0 +1,93 @@
+
+main{
+	display : table;
+	margin-left : auto;
+	margin-right : auto;
+	justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h3 {
+   	color: #19CE60;
+}
+
+a {
+	text-decoration-line: none; 
+	color:#000000;
+}
+
+
+table{
+	border-color:#ffffff;
+	width: 50%;
+	table-layout: fixed;
+	margin: auto; text-align: center;
+    border-collapse: collapse;
+    border-top:2px solid #19CE60;	
+}
+
+td, th {
+	word-break:break-all;
+    height:100;
+    border: 1px solid #ddd; /* 테이블 셀의 테두리 */
+    padding: 10px;
+    text-align: left;
+    overflow: hidden; /* 내용이 셀 크기를 초과할 경우 숨기기 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 '...' 표시 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+btn{
+	text-align: center;
+    padding: 100px;
+    background: whitesmoke;
+    display: table-cell;
+}
+button {
+    margin: 5px;
+    width: 118px;
+}
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10x 10px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    font-weight: 200;
+    transition: 0.25s;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 10px 10px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    font-weight: 200;
+    transition: 0.25s;
+}
+
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
+.w-btn-gray {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+.w-btn-gray-outline:hover {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}

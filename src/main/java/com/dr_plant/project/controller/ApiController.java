@@ -26,13 +26,6 @@ public class ApiController {
 		return "test";
 	}
 
-	@GetMapping("/dbTest")
-	public ArrayList<SnsrDataTb> selectAllCode() {
-		ArrayList<SnsrDataTb> result = sensorDataMapper.select();
-		result.get(0).setModId("test");
-		return result;
-	}
-
 	@GetMapping("/kakaoLogin")
 	public void kakaoLogin(@RequestParam String code, @RequestParam String state, HttpServletResponse response) {
 

@@ -6,19 +6,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @EqualsAndHashCode(callSuper=true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExtrmnCmpTb extends BaseTb {
 
-	private Integer cmpId;
-	private String cmpNm;
-	private String fullAddr;
-	private String addr;
-	private String addrDet;
-	private String bizDiv;
-	private String cont;
-	private String remarks;
-	private String rgnId;
+    private Integer CMP_ID;
+    private String CMP_NM;
+    private String FULL_ADDR;
+    private String ADDR;
+    private String ADDR_DET;
+    private String BIZ_DIV;
+    private String CONT;
+    private String REMARKS;
+    private String RGN_ID;
 }

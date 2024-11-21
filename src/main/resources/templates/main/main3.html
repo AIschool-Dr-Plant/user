@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main</title>
+    <link rel="stylesheet" href="./css/mainStyle.css"> 
+	<style>
+	    .current {
+	        font-weight: bold;
+	        pointer-events: none; /* 클릭 비활성화 */
+	        color: #000; /* 텍스트 색상 */
+	    }
+	</style>
+</head>
+<body>
+    <!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+    <div th:replace="fragments/header :: siteHeader"></div>
+    
+
+
+   <button id="btnClick" type="button">클릭</button>
+   <script type="text/javascript">
+      document.getElementById('btnClick').addEventListener('click', function() {
+         fetch('https://123.100.174.98:8155/api/predict', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'date': '2023-07-14' }) // 전송할 데이터
+         })
+         .then(response => response.json())
+         .then(data => {
+            console.log("Success:", data);
+         })
+         .catch(error => {
+            console.error("Error:", error);
+         });
+
+      });
+   </script>
+   
+   
+</body>
+</html>
