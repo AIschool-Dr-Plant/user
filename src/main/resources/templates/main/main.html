@@ -18,7 +18,7 @@
 	<main>
 		<!--NCPMS 병해충 발생정보<-->
 		<article class="first_line">
-			<h1 style="margin-bottom: 0;">NCPMS 병해충 발생정보</h1>
+			<h1 style="margin-bottom: 0;">병해충 발생정보</h1>
 			<p style="float: right; margin-top: 0;">제14호(2024.11.1.~2024.11.30.)</p>
         	<img alt="상태값정보" src="./assets/img/label.PNG" style="clear:both; float: right; width:50%;">
 			
@@ -171,8 +171,8 @@
 			        </tr>
 		        </table>
 		        </div>
-		        
-				<div style="clear:both; text-align: center; padding-top: 20px;">
+		        <p style="float:right;"><a href="https://ncpms.rda.go.kr/npms/Main.np">출처 : 국가농작물병채충관리시스템</a></p>
+				<div style="clear:both; text-align: center; padding-top: 0px;">
 				    <a th:if="${currentPage > 1}" th:href="@{/main(page=1, cusId=${cusId})}">맨앞</a>
 				    <a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1}, cusId=${cusId})}">이전</a>
 				    
@@ -185,7 +185,7 @@
 				</div>
 	        <br>
 	        <!--관심위치 인근 방제업체 리스트-->
-			<h1>관심위치 인근 방제업체 리스트</h1>
+			<h1 style="margin-top: 0;">관심위치 인근 방제업체 리스트</h1>
 			<label for="dropdown">관심위치</label>
 			<select id="dropdown" name="options">
 		        <option value="나주배밭1">나주배밭1</option>
