@@ -1,0 +1,119 @@
+/* 스타일 초기화 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+form {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 80px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #333333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #55c78e;
+}
+
+button[type="button"] {
+    background-color: #35c759;
+    color: #ffffff;
+    border: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+button[type="button"]:hover {
+    background-color: #2aad4f;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #35c759;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2aad4f;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label[for="kakaoAgree"],
+label[for="kakaoDisagree"],
+label[for="privacyAgree"],
+label[for="privacyDisagree"] {
+    margin-right: 15px;
+}
+
+
+.dropdown-group {
+    display: flex;
+    align-items: center; /* 드롭박스와 텍스트의 수직 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+}
+
+
+.dropdown-group label {
+    font-weight: bold;
+    color: #333; /* 텍스트 색상 */
+    width: 300px;
+}
+.container {
+  display: grid;
+  place-items: center; /* 가로 및 세로 중앙 정렬 */
+}
+
+.container button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+
+
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+    <link rel="stylesheet" href="./css/mypagefom.css"> 
+    
+	<script th:inline="javascript">
+	   const cusId = /*[[${cusId}]]*/ 'null';
+	</script>
+	<script>
+	    document.addEventListener("DOMContentLoaded", function() {
+	        const toggleSwitch = document.querySelector("input[type='checkbox']");
+	        const cusId = document.querySelector(".toggle-switch").getAttribute("data-cusid");
+	
+	        toggleSwitch.addEventListener("change", function() {
+	            const isChecked = toggleSwitch.checked ? 1 : 0;
+	
+	            fetch('/updateAlarmAgree', {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                body: `cusId=${cusId}&alarmAgree=${isChecked}`
+	            })
+	            .then(response => response.text())
+	            .then(data => {
+	                if (data === 'success') {
+	                    alert('알림 서비스 설정이 업데이트되었습니다.');
+	                } else {
+	                    alert('업데이트에 실패했습니다.');
+	                }
+	            });
+	        });
+	    });
+	</script>
+    <script>
+	    document.addEventListener("DOMContentLoaded", function() {
+	        const deleteButtons = document.querySelectorAll(".delete-button");
+	
+	        deleteButtons.forEach(button => {
+	            button.addEventListener("click", function() {
+	                const locId = button.getAttribute("data-locid");
+	
+	                if (confirm("이 위치를 삭제하시겠습니까?")) {
+	                    fetch('/deleteLocation', {
+	                        method: 'POST',
+	                        headers: {
+	                            'Content-Type': 'application/x-www-form-urlencoded'
+	                        },
+	                        body: `locId=${locId}`
+	                    })
+	                    .then(response => response.text())
+	                    .then(data => {
+	                        if (data === 'success') {
+	                            alert('위치가 삭제되었습니다.');
+	                            location.reload(); // 페이지를 새로고침하여 변경 사항 반영
+	                        } else {
+	                            alert('삭제에 실패했습니다.');
+	                        }
+	                    });
+	                }
+	            });
+	        });
+	    });
+    </script>
+	<script>
+	   document.addEventListener("DOMContentLoaded", function() {
+	       const registerButton = document.getElementById("registerLocationButton");
+	       registerButton.addEventListener("click", function() {
+	           const form = document.getElementById("addLocationForm");
+	           const formData = new FormData(form);
+	           const params = new URLSearchParams();
+	
+	           formData.forEach((value, key) => {
+	               params.append(key, value);
+	           });
+	
+	           fetch('/registerLocation', {
+	               method: 'POST',
+	               headers: {
+	                   'Content-Type': 'application/x-www-form-urlencoded'
+	               },
+	               body: params.toString()
+	           })
+	           .then(response => response.text())
+	           .then(data => {
+	               if (data === 'success') {
+	                   alert('관심 위치가 등록되었습니다.');
+	                   location.reload(); // 페이지 새로고침하여 등록된 위치 표시
+	               } else {
+	                   alert('등록에 실패했습니다.');
+	               }
+	           });
+	       });
+	   });
+	</script>
+
+</head>
+<body>
+	<!-- 헤더를 외부 프래그먼트로부터 가져오기 -->
+	<div th:replace="fragments/header :: siteHeader"></div>
+	<main>
+	<article>
+		<h3>마이페이지</h3>
+		<table border="1">
+			<tr>
+				<td>카카오 알림서비스 사용여부</td>
+				<td class="ts">
+					<label class="toggle-switch" th:attr="data-cusid=${cusId}">
+					    <input type="checkbox" th:checked="${alarmAgree == 1}">
+					    <span class="slider"></span>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><a href='/login/newpw'>새 비밀번호 설정</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">로그아웃</td>
+			</tr>
+			<tr>
+				<td colspan="2">탈퇴</td>
+			</tr>
+		</table>
+	</article>
+	<br>
+	<article>
+		<h3>관심위치리스트</h3>
+		<table border="1" class="center_tb">
+             <tr>
+                 <th>위치별명</th>
+                 <th>장치ID</th>
+                 <th>등록일</th>
+                 <th>위치</th>
+                 <th>삭제</th>
+             </tr>
+             <tr th:each="location : ${locationList}">
+                 <td th:text="${location.LOC_NICK}"></td>
+                 <td th:text="${location.DEV_ID}"></td>
+                 <td th:text="${#strings.substring(location.REG_DT, 0, 10)}"></td>
+                 <td th:text="${location.RGN_NM}"></td>
+                 <td class="delete_bt">
+                 	<button type="button" th:attr="data-locid=${location.LOC_ID}" class="delete-button">삭제하기</button>
+                 </td>
+             </tr>
+         </table>
+	</article>
+	<br>
+	<article>
+	    <h3>관심위치 등록하기</h3>
+	    <form id="addLocationForm">
+	        <input type="hidden" name="cusId" th:value="${cusId}"> <!-- cusId를 숨김 필드로 추가 -->
+	        <table border="1" class="center_tb">
+	            <tr>
+	                <td>위치별명</td>
+	                <td><input type="text" name="locNick" required></td>
+	            </tr>
+	            <tr>
+	                <td>장치ID</td>
+	                <td><input type="text" name="devId" required></td>
+	            </tr>
+	            <tr>
+	                <td>위치 ID</td>
+	                <td><input type="text" name="rgnId" required></td>
+	            </tr>
+	        </table>
+	        <br>
+	        <div class="rg_bt">
+	        	<button type="button" id="registerLocationButton">등록하기</button>
+			</div>
+	        
+	    </form>
+	</article>
+	</main>
+</body>
+</html>

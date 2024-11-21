@@ -14,11 +14,11 @@ import lombok.ToString;
 @ToString(includeFieldNames = true,callSuper = true)
 public class CusTb extends BaseTb {
 
-	private String cusId;
-	private String cusPw;
-	private String email;
-	private String cusBday;
-	private String cusNum;
-	private Integer alarmAgree;
-	private Integer infoAgree;
+	private String CUS_ID;
+	private String CUS_PW;
+	private String EMAIL;
+	private String CUS_BDAY;
+	private String CUS_NUM;
+	private Integer ALARM_AGREE;
+	private Integer INFO_AGREE;
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>news</title>
+    <link rel="stylesheet" href="./css/news.css"> 
+</head>
+<body>
+	<div th:replace="fragments/header :: siteHeader"></div>
+	<main>
+    <article>
+	    <h3>농업뉴스</h3>
+	    <table border="1">
+	        <tr th:each="news : ${News}">
+	            <td class="newstitle">
+	                <a th:href="${news.URL}" th:text="${news.TITLE}" target="_blank"></a> 
+	            </td>
+	            <td class="newspub">
+	            	<span th:text="${news.PUB}"></span>
+	            </td>
+	            <td class="newsreporter">
+	            	<span th:text="${news.REPORTER}"></span>
+	            </td>
+	            <td class="newspub_dt">
+	            	<span th:text="${news.PUB_DT}"></span>
+	            </td>
+	        </tr>
+	    </table>
+		<div>
+		     <a th:href="@{/news(page=${currentPage - 1})}" th:if="${currentPage > 1}">이전</a>
+		     <span th:each="i : ${#numbers.sequence(startPage, endPage)}">
+		         <a th:href="@{/news(page=${i})}" th:text="${i}" th:classappend="${i == currentPage} ? 'current-page' : ''"></a>
+		     </span>
+		     <a th:href="@{/news(page=${currentPage + 1})}" th:if="${currentPage < totalPages}">다음</a>
+		</div>
+	</article>
+	</main>
+</body>
+</html>
