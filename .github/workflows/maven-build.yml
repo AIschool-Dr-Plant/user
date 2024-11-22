@@ -3,7 +3,7 @@ name: Maven Build Pipeline
 on:
   push:
     branches:
-      - obd
+      - master
 
 jobs:
   build-and-deploy:
