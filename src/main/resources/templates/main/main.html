@@ -171,7 +171,7 @@
 					</tr>
 				</table>
 				</div>
-				<p style="float:right;"><a href="https://ncpms.rda.go.kr/npms/Main.np">출처 : 국가농작물병채충관리시스템</a></p>
+				<p style="float:right;"><a href="https://ncpms.rda.go.kr/npms/Main.np">출처 : 국가농작물병해충관리시스템</a></p>
 				<div style="clear:both; text-align: center; padding-top: 0px;">
 					<a th:if="${currentPage > 1}" th:href="@{/main(page=1, cusId=${cusId})}">맨앞</a>
 					<a th:if="${currentPage > 1}" th:href="@{/main(page=${currentPage - 1}, cusId=${cusId})}">이전</a>
@@ -413,8 +413,26 @@
 					});
 				});
 			</script>
+			<script type="text/javascript">
+			   document.addEventListener('DOMContentLoaded', function() {
+			      fetch('http://localhost:5050/api/predict', {
+			         method: 'POST',
+			         headers: {
+			            'Content-Type': 'application/json'
+			         },
+			         body: JSON.stringify({ 'date': '2023-07-14' }) // 전송할 데이터
+			      })
+			      .then(response => response.json())
+			      .then(data => {
+			         console.log("Success:", data);
+			         // 데이터 처리 로직 추가
+			      })
+			      .catch(error => {
+			         console.error("Error:", error);
+			      });
+			   });
+			</script>
 	</article>
 	</main>
 </body>
-
 </html>
