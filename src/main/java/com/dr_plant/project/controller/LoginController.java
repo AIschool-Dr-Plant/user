@@ -27,7 +27,7 @@ public class LoginController {
     @GetMapping("/login")
     public String loginForm() {
         System.out.println("//login//");
-        return "/login/loginForm"; // loginForm.html 반환
+        return "login/loginForm"; // loginForm.html 반환
     }
 
     // 로그인 처리
@@ -74,20 +74,20 @@ public class LoginController {
     @GetMapping("/login/signup")
     public String signupForm() {
         System.out.println("//signup//");
-        return "/login/signupForm"; // signupForm.html 반환
+        return "login/signupForm"; // signupForm.html 반환
     }
 
     // 아이디 찾기(findid) 폼
     @GetMapping("/login/findid")
     public String findidForm() {
         System.out.println("//findid//");
-        return "/login/findidForm"; // findidForm.html 반환
+        return "login/findidForm"; // findidForm.html 반환
     }
 
     // 새 비밀번호 설정(newpw) 폼
     @GetMapping("/login/newpw")
     public String newpw() {
         System.out.println("//newpw//");
-        return "/login/newpwForm"; // newpwForm.html 반환
+        return "login/newpwForm"; // newpwForm.html 반환
     }
 }
