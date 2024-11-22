@@ -27,11 +27,11 @@
 			<div class="card" style="clear:both;">
 				<table border="1">
 					<tr class="pests">
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[0].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[0].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -50,11 +50,11 @@
 				</table>
 				<table border="1">
 					<tr>
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[1].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[1].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -73,11 +73,11 @@
 				</table>
 				<table border="1">
 					<tr>
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[2].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[2].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -99,11 +99,11 @@
 			<div class="card3">
 				<table border="1">
 					<tr>
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[3].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[3].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -125,11 +125,11 @@
 			<div class="card">
 				<table border="1">
 					<tr>
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[4].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[4].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -149,11 +149,11 @@
 				
 				<table border="1">
 					<tr>
-						<td>작물명</td>
+						<td>병명</td>
 						<td th:text="${data[5].PEST_NM}"></td>
 					</tr>
 					<tr>
-						<td>병명</td>
+						<td>작물명</td>
 						<td th:text="${data[5].CRP_NM}"></td>
 					</tr>
 				   	<tr>
@@ -232,45 +232,25 @@
 		
 		
 		<article class="second_line">
-		
-			<!--농업뉴스-->
-			<h1 style="margin-bottom: 0;">농업뉴스</h1>
-			<div>
-				<a th:href="@{/news(cusId=${cusId})}" style="float: right;">더보기>></a>
-			</div>
-			<table border="1" style="width: 550px;">
-				<tr th:each="news : ${latestNews}">
-					<td style="padding-top: 2px; padding-bottom: 2px;">
-						<a th:href="${news.URL}" th:text="${news.TITLE}"  style="font-size:18px; font-weight: normal;" ></a>
-						<br>
-						<span th:text="${news.PUB}"></span>
-						<span th:text="${news.REPORTER}"></span>
-						<span th:text="${news.PUB_DT}"></span>
-					</td>
-				</tr>
-			</table>
-		
-			<br>
-			
 			<!--배 발병 예측-->
-			<h1 style="margin-top: 0;">배 발병 예측</h1>
+			<h1>배 발병 예측</h1>
 			<table border="1" class="outbreak" style="width: 550px; text-align: center;">
-				<tr style="font-size:18px; font-weight: normal;">
+				<tr style="font-weight: bold;">
 					<td></td>
-					<td style="font-weight: bold">오늘</td>
-					<td style="font-weight: bold">내일</td>
-					<td style="font-weight: bold">모레</td>
-					<td style="font-weight: bold">글피</td>
+					<td>오늘</td>
+					<td>내일</td>
+					<td>모레</td>
+					<td>글피</td>
 				</tr>
 				<tr>
-					<td style="font-size:18px; font-weight: bold;">온도</td>
+					<td style="font-weight: bold;">온도</td>
 					<td>25.85℃</td>
 					<td>24.06℃</td>
 					<td>23.65℃</td>
 					<td>24.88℃</td>
 				</tr>
 				<tr>
-					<td style="font-size:18px; font-weight: bold;">강수여부</td>
+					<td style="font-weight: bold;">강수여부</td>
 					<td>True</td>
 					<td>True</td>
 					<td>True</td>
@@ -280,7 +260,7 @@
 			<table border="1" class="outbreak" style="width: 550px; text-align: center;">
 				<tr>
 					<td></td>
-					<td colspan="4" style="text-align: center; font-size:18px; font-weight: bold;">발병률</td>
+					<td colspan="4" style="text-align: center; font-weight: bold;">감염율</td>
 				</tr>
 				<tr>
 					<td style="text-align: center;">
@@ -294,8 +274,8 @@
 					<td style="color:red;">98.34%</td>
 				</tr>
 				<tr>
-					<td style="font-size:18px; font-weight: bold;">
-						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=" style="font-size: 15px;">붉은별무늬병</a></td>
+					<td style="font-weight: bold;">
+						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000665&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=">붉은별무늬병</a></td>
 					<td colspan="4">
 						<button class="w-btn-outline w-btn-gray-outline" type="button" id="redStar" name="sAgApplcDbyhsNm1" value="붉은별무늬병">추천약제</button>
 					</td>
@@ -312,8 +292,8 @@
 					<td>3.96%</td>
 				</tr>
 				<tr>
-					<td style="font-size:18px; font-weight: bold;">
-						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=" style="font-size: 15px;">검은별무늬병</a></td>
+					<td style="font-weight: bold;">
+						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=" >검은별무늬병</a></td>
 					<td colspan="4">
 						<button class="w-btn-outline w-btn-gray-outline" type="button" id="blackStar" name="sAgApplcDbyhsNm1" value="검은별무늬병">추천약제</button>
 					</td>
@@ -330,8 +310,8 @@
 					<td style="color:red;">86.14%</td>
 				</tr>
 				<tr>
-					<td style="font-size:18px; font-weight: bold;"> 
-						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=" style="font-size: 15px;">검은별무늬병</a></td>
+					<td style="font-weight: bold;"> 
+						<a target="_blank" href="https://ncpms.rda.go.kr/npms/ImageSearchInfoR2.np?detailKey=D00000675&moveKey=&queryFlag=A&upperNm=%EA%B3%BC%EC%88%98&kncrCode=FT010602&kncrNm=%EB%B0%B0&nextAction=%2Fnpms%2FImageSearchDtlR2.np&finalAction=&flagCode=S&sPriyClCode=" >검은무늬병</a></td>
 					<td colspan="4">
 						<button class="w-btn-outline w-btn-gray-outline" type="button" id="black" name="sAgApplcDbyhsNm1" value="검은무늬병">추천약제</button>
 					</td>
@@ -432,6 +412,22 @@
 			      });
 			   });
 			</script>
+					<!--농업뉴스-->
+			<h1 style="margin-bottom: 0;">농업뉴스</h1>
+			<div>
+				<a th:href="@{/news(cusId=${cusId})}" style="float: right;">더보기>></a>
+			</div>
+			<table border="1" style="width: 550px;">
+				<tr th:each="news : ${latestNews}">
+					<td style="padding-top: 2px; padding-bottom: 2px;">
+						<a th:href="${news.URL}" th:text="${news.TITLE}"  style="font-size:18px; font-weight: normal;" ></a>
+						<br>
+						<span th:text="${news.PUB}" style="color:grey;"></span>
+						<span th:text="${news.REPORTER}" style="color:grey;"></span>
+						<span th:text="${news.PUB_DT}" style="color:grey;"></span>
+					</td>
+				</tr>
+			</table>	
 	</article>
 	</main>
 </body>
