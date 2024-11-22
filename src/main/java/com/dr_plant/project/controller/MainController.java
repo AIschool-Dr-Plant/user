@@ -28,7 +28,7 @@ public class MainController {
 	private NewsMapper newsMapper;
 
 	// 메인 페이지 요청
-	@GetMapping("/main")
+	@GetMapping({"","/","/main"})
 	public String main(Model model, @RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "1") int companyPage, @RequestParam(defaultValue = "KDH") String cusId) {
 		// Existing pest forecast logic
