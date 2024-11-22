@@ -41,7 +41,7 @@ public class ExtrmnCmpController {
         model.addAttribute("companyCurrentPage", companyPage);
         model.addAttribute("companyTotalPages", companyTotalPages);
 		
-		return "/extrmnCmp/extrmnCmp"; 
+		return "extrmnCmp/extrmnCmp"; 
 	}
 	
 }
