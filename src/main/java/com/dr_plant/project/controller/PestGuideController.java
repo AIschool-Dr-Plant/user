@@ -18,7 +18,7 @@ public class PestGuideController {
 		if (cusId != null) {
 	        model.addAttribute("cusId", cusId);
 	    }
-		return "/pestGuide/pestGuide"; 
+		return "pestGuide/pestGuide"; 
 	}
 	
 }

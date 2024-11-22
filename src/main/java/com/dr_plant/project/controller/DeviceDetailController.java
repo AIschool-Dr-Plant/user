@@ -46,7 +46,7 @@ public class DeviceDetailController {
         List<String> locNickList = intLocMapper.findLocNickByCusId(cusId);
         model.addAttribute("locNickList", locNickList);
         
-        return "/device/deviceDetail"; // signupForm.html 반환
+        return "device/deviceDetail"; // signupForm.html 반환
     }
     
     @GetMapping("/getDeviceData")

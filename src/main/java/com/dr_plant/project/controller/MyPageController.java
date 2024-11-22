@@ -42,7 +42,7 @@ public class MyPageController {
             model.addAttribute("locationList", locationList);
             model.addAttribute("cusId", cusId);
         }
-		return "/mypage/mypageForm"; 
+		return "mypage/mypageForm"; 
 	}
 	
 	@PostMapping("/updateAlarmAgree")

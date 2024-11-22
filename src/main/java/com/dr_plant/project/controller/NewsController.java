@@ -51,7 +51,7 @@ public class NewsController {
             model.addAttribute("cusId", cusId);
         }
         
-        return "/news/news";
+        return "news/news";
     }
 	
 }
